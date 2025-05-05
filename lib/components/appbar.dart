@@ -33,7 +33,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               menuPadding: EdgeInsets.all(15),
               onSelected: (value) {
                 if (value == 'logout') {
-                  // هنا تحط منطق تسجيل الخروج
+                  Get.offAllNamed("/login");
                 } else if (value == 'profile') {
                   // هنا تحط منطق الانتقال لصفحة الحساب
                 }

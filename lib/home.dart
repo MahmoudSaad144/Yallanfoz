@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:yallanfoz/components/appbar.dart';
-import 'package:yallanfoz/components/drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,7 +18,7 @@ class __Home extends State<Home> {
   Widget build(BuildContext context) {
     String? name = "Mahmoud Saad";
     String? photo = "https://giftdose.dev-swift.com/imgs/users/default-img.png";
-    String? email = "MahmoudSaad@gmail.com";
+    // String? email = "MahmoudSaad@gmail.com";
 
     return Scaffold(
       appBar: AppbarComponent(title: "Home", name: name, photo: photo),
