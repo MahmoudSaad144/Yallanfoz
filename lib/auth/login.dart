@@ -42,7 +42,7 @@ class __LoginState extends State<Login> {
                     "يلا نفوز",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: MediaQuery.of(context).size.width * 0.02,
                       fontFamily: "Cairo",
                       color: Colors.white,
                     ),

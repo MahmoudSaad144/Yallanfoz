@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      home: Signup(),
+      home: Splash(),
 
       // Define routes using GetX
       getPages: [

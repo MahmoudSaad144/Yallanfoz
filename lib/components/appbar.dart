@@ -1,36 +1,151 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final String name;
+  final String photo; // رابط الصورة
 
-  const AppbarComponent({super.key, required this.title});
+  const AppbarComponent({
+    super.key,
+    required this.title,
+    required this.name,
+    required this.photo,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      //iconTheme علشان لو عايز اغير ايقون ال drawer للون اللي عايزه بسهولة
-      iconTheme: IconThemeData(color: Colors.white),
-      //centerTitle علشان اخليه في النص
-      // leading: IconButton(
-      //   onPressed: () {},
-      //   icon: Icon(Icons.menu),
-      //   color: Colors.white,
-      // ),
-      centerTitle: true,
-      shadowColor: const Color.fromARGB(66, 98, 96, 96),
-      //elevation نسبه انتشار الشادو
-      elevation: 20.0,
-      title: Text(title, style: TextStyle(fontSize: 16, color: Colors.white)),
-      backgroundColor: Color.fromARGB(255, 0, 183, 255),
-      // actions لو انا عايز احط مجموعه من الزراير تقوم بعمل شي ما في
-      actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.percent)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.list)),
-      ],
+    return SafeArea(
+      child: Container(
+        height: preferredSize.height,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // جزء المستخدم مع Dropdown
+            PopupMenuButton<String>(
+              position: PopupMenuPosition.under,
+              color: Colors.white,
+              menuPadding: EdgeInsets.all(15),
+              onSelected: (value) {
+                if (value == 'logout') {
+                  // هنا تحط منطق تسجيل الخروج
+                } else if (value == 'profile') {
+                  // هنا تحط منطق الانتقال لصفحة الحساب
+                }
+              },
+              itemBuilder:
+                  (context) => [
+                    const PopupMenuItem(
+                      value: 'profile',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [Icon(Icons.person), Text(' حسابي ')],
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      value: 'mygames',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(Icons.games_outlined),
+                          Text(' العابي '),
+                        ],
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      value: 'settings',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [Icon(Icons.settings), Text('الاعدادات')],
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      value: 'logout',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [Icon(Icons.exit_to_app), Text('خروج')],
+                      ),
+                    ),
+                  ],
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 18,
+                    backgroundImage: NetworkImage(photo),
+                    backgroundColor: Colors.grey[200],
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    name,
+                    style: const TextStyle(fontSize: 12, color: Colors.black87),
+                  ),
+                  const Icon(Icons.arrow_drop_down, color: Colors.black54),
+                ],
+              ),
+            ),
+
+            // الأزرار الملونة في النص
+            Row(
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // إضافة لعبة جديدة
+                  },
+                  icon: const Icon(Icons.add, size: 18),
+                  label: const Text('شراء العاب جديدة'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepOrange,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            // أزرار التنقل على اليمين
+            Row(
+              children: [
+                TextButton(onPressed: () {}, child: const Text('العب')),
+                TextButton(onPressed: () {}, child: const Text('تواصل معنا')),
+                TextButton(onPressed: () {}, child: const Text('ألعابي')),
+                const SizedBox(width: 8),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed("/home");
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('images/logo.png', height: 25),
+                      Text(
+                        ' يلا نفوز ',
+                        style: TextStyle(
+                          fontFamily: "Cario",
+                          color: Colors.deepOrange,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(80); //ده اللي بيحدد للـ Flutter إن الارتفاع الطبيعي للـ AppBar هو ارتفاع الـ toolbar العادي (kToolbarHeight = 56.0).
+  Size get preferredSize => const Size.fromHeight(80);
 }

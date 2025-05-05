@@ -40,7 +40,7 @@ class __Forgetpassword extends State<Forgetpassword> {
                     "يلا نفوز",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: MediaQuery.of(context).size.width * 0.02,
                       fontFamily: "Cairo",
                       color: Colors.white,
                     ),

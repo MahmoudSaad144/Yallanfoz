@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DrawerComponent extends StatelessWidget {
-  final String name;
-  final String photo;
-  final String email;
-  const DrawerComponent({
-    super.key,
-    required this.name,
-    required this.photo,
-    required this.email,
-  });
+  const DrawerComponent({super.key});
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,26 +25,6 @@ class DrawerComponent extends StatelessWidget {
                 "Menu",
                 style: TextStyle(color: Colors.blue, fontSize: 25),
               ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Card(
-                      child: ListTile(
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(60)),
-                          child: Image.network(photo, fit: BoxFit.fill),
-                        ),
-                        title: Text(name, style: TextStyle(fontSize: 16)),
-                        subtitle: Text(email, style: TextStyle(fontSize: 10)),
-                        onTap: () {},
-                      ),
-                    ),
-                  ),
-                ),
-              ],
             ),
             Card(
               child: Padding(

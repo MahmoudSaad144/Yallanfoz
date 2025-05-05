@@ -54,7 +54,7 @@ class _SignupState extends State<Signup> {
                     " انشاء حساب جديد ",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: MediaQuery.of(context).size.width * 0.02,
                       fontFamily: "Cairo",
                       color: Colors.white,
                     ),

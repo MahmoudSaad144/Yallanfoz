@@ -89,7 +89,8 @@ class _SplashState extends State<Splash> {
                               "يلا",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 45,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
                                 color: Color(0xFFFFECB3),
                               ),
@@ -124,7 +125,8 @@ class _SplashState extends State<Splash> {
                               "نفوز",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 45,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
                                 color: Color(0xFFFFECB3),
                               ),
@@ -153,7 +155,7 @@ class _SplashState extends State<Splash> {
                     child: Text(
                       "الوقت ما يحلى الا معاها …",
                       style: TextStyle(
-                        fontSize: 45,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Cairo",
                         color: Colors.white,
