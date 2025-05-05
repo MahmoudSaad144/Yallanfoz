@@ -43,7 +43,7 @@ class _SplashState extends State<Splash> {
 
     // بعد 6 ثواني، تحقق من حالة تسجيل الدخول
     Timer(const Duration(seconds: 6), () {
-      Get.offAllNamed("/login");
+      Get.offAllNamed("/home");
     });
   }
 

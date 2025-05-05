@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallanfoz/components/country_picker_code.dart';
+import 'package:yallanfoz/components/only_country_picker.dart';
 import 'package:yallanfoz/components/otp.dart';
 
 class Signup extends StatefulWidget {
@@ -14,9 +16,7 @@ class _SignupState extends State<Signup> {
   void dispose() {
     name.dispose();
     email.dispose();
-    phone_code.dispose();
     phone.dispose();
-    country.dispose();
     password.dispose();
     confirmpassword.dispose();
     super.dispose();
@@ -25,11 +25,11 @@ class _SignupState extends State<Signup> {
   GlobalKey<FormState> loginform = GlobalKey();
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController phone_code = TextEditingController();
   TextEditingController phone = TextEditingController();
-  TextEditingController country = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
+  String phone_code = "+965";
+  String country = "Kuwait";
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
   bool __isloading = false;
@@ -115,50 +115,14 @@ class _SignupState extends State<Signup> {
                             ),
                             SizedBox(width: 10),
                             Expanded(
-                              child: TextFormField(
+                              child: CountryCodePickerField(
                                 controller: phone,
-
-                                validator: (phone) {
-                                  if (phone!.isEmpty) {
-                                    return " هذا الحقل مطلوب";
-                                  }
-                                  return null;
+                                label: "رقم الهاتف",
+                                onCountryCodeChanged: (code) {
+                                  setState(() {
+                                    phone_code = code;
+                                  });
                                 },
-                                //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
-                                autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                  labelText: " رقم الهاتف ",
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFFFD700,
-                                      ), // لون البوردر العادي
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
-                                      ), // لون البوردر وقت الفوكس
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                ),
                               ),
                             ),
                           ],
@@ -223,49 +187,14 @@ class _SignupState extends State<Signup> {
                             SizedBox(width: 10),
 
                             Expanded(
-                              child: TextFormField(
-                                controller: country,
-                                validator: (country) {
-                                  if (country!.isEmpty) {
-                                    return " هذا الحقل مطلوب";
-                                  }
-                                  return null;
+                              child: CountryOnlyPickerField(
+                                label: "الدولة",
+                                onCountrySelected: (countryName) {
+                                  print(countryName);
+                                  setState(() {
+                                    country = countryName;
+                                  });
                                 },
-                                //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
-                                autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                  labelText: " اختار البلد ",
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFFFD700,
-                                      ), // لون البوردر العادي
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
-                                      ), // لون البوردر وقت الفوكس
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                ),
                               ),
                             ),
                           ],
@@ -413,7 +342,7 @@ class _SignupState extends State<Signup> {
                                     __isloading = true;
                                   });
                               print(
-                                "vaild ${email.text}  ${phone.text} ${country.text}  ${name.text}  ${password.text}  ${confirmpassword.text} ${phone_code.text}  ",
+                                "==========================vaild ${email.text} ${phone_code}${phone.text} ${country}  ${name.text}  ${password.text}  ${confirmpassword.text}",
                               );
                               _showOtpDialog();
                             }

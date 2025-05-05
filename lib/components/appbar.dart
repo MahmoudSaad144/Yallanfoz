@@ -24,13 +24,13 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Color.fromARGB(255, 0, 183, 255),
       // actions لو انا عايز احط مجموعه من الزراير تقوم بعمل شي ما في
       actions: [
-        // IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-        // IconButton(onPressed: () {}, icon: Icon(Icons.percent)),
-        // IconButton(onPressed: () {}, icon: Icon(Icons.list)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.percent)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.list)),
       ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight); //ده اللي بيحدد للـ Flutter إن الارتفاع الطبيعي للـ AppBar هو ارتفاع الـ toolbar العادي (kToolbarHeight = 56.0).
+  Size get preferredSize => Size.fromHeight(80); //ده اللي بيحدد للـ Flutter إن الارتفاع الطبيعي للـ AppBar هو ارتفاع الـ toolbar العادي (kToolbarHeight = 56.0).
 }
