@@ -22,12 +22,38 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<!-- صلاحية الاتصال بالإنترنت -->
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
+
+<!-- صلاحية الاتصال بالإنترنت -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+
+	<!-- صلاحية الوصول للكاميرا -->
+	<key>NSCameraUsageDescription</key>
+	<string>نحتاج الوصول إلى الكاميرا عشان تقدر تصور صور أو فيديو</string>
+
+	<!-- صلاحية الوصول للصور -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>نحتاج الوصول إلى مكتبة الصور علشان ترفع أو تختار صور</string>
+
+	<!-- صلاحية حفظ صور في الاستوديو -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>نحتاج إذن لحفظ الصور أو الفيديوهات في مكتبة الصور</string>
+
+	<!-- صلاحية تسجيل الصوت -->
+	<!-- <key>NSMicrophoneUsageDescription</key>
+	<string>نحتاج إذن استخدام الميكروفون </string> -->
+
+	<!-- صلاحية تحديد الموقع -->
+	<!-- <key>NSLocationWhenInUseUsageDescription</key>
+	<string>نحتاج إذن تحديد الموقع أثناء استخدام التطبيق </string> -->
+
+	<!-- صلاحية الوصول للميديا (للـ iOS 14 وما فوق) -->
+	<key>NSAppleMusicUsageDescription</key>
+	<string>نحتاج إذن للوصول للميديا </string>
+
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

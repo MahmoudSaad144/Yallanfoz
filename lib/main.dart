@@ -1,20 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart'; // استورد GetX
+import 'package:permission_handler/permission_handler.dart';
 import 'package:yallanfoz/auth/forgetpassword.dart';
 import 'package:yallanfoz/auth/login.dart';
 import 'package:yallanfoz/auth/register.dart';
 import 'package:yallanfoz/home.dart';
+import 'package:yallanfoz/pages/profile.dart';
 import 'package:yallanfoz/splash.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]);
-  // إخفاء الشريطين (status bar + navigation bar)
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  WidgetsFlutterBinding.ensureInitialized(); // ده مهم جدًا
+  await MainRequestBeforeStartApp();
   runApp(MyApp());
 }
 
@@ -46,6 +45,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/register", page: () => Signup()),
         GetPage(name: "/forgetpassword", page: () => Forgetpassword()),
         GetPage(name: "/home", page: () => Home()),
+        GetPage(name: "/profile", page: () => Profile()),
       ],
       // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله
       // Get.offNamed("/login"); // للذهاب مع إزالة الصفحة الحالية
@@ -53,4 +53,23 @@ class MyApp extends StatelessWidget {
       // Get.back(); // للرجوع للخلف
     );
   }
+}
+
+Future<void> MainRequestBeforeStartApp() async {
+  // تثبيت وضع الشاشة
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
+  // طلب الأذونات أول مرة فقط
+
+  PermissionStatus cameraStatus = await Permission.camera.request();
+
+  if (cameraStatus.isGranted) {
+    print("كل الأذونات اتوافق عليها ✅");
+  } else {
+    print("فيه إذن مرفوض ❌");
+  }
+  // إخفاء شريط الحالة
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 }

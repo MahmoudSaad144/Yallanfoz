@@ -1,11 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String name;
-  final String photo; // رابط الصورة
-
+  final dynamic photo;
   const AppbarComponent({
     super.key,
     required this.title,
@@ -32,10 +33,14 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.white,
               menuPadding: EdgeInsets.all(15),
               onSelected: (value) {
-                if (value == 'logout') {
+                if (value == 'profile') {
+                  Get.toNamed("/profile");
+                } else if (value == 'mygames') {
+                  Get.toNamed("/mygames");
+                } else if (value == 'settings') {
+                  Get.toNamed("/settings");
+                } else if (value == 'logout') {
                   Get.offAllNamed("/login");
-                } else if (value == 'profile') {
-                  // هنا تحط منطق الانتقال لصفحة الحساب
                 }
               },
               itemBuilder:
@@ -76,7 +81,10 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   CircleAvatar(
                     radius: 18,
-                    backgroundImage: NetworkImage(photo),
+                    backgroundImage:
+                        photo is File
+                            ? FileImage(photo as File)
+                            : NetworkImage(photo),
                     backgroundColor: Colors.grey[200],
                   ),
                   const SizedBox(width: 8),
@@ -94,7 +102,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    // إضافة لعبة جديدة
+                    Get.toNamed("/package");
                   },
                   icon: const Icon(Icons.add, size: 18),
                   label: const Text('شراء العاب جديدة'),
@@ -116,13 +124,28 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
             // أزرار التنقل على اليمين
             Row(
               children: [
-                TextButton(onPressed: () {}, child: const Text('العب')),
-                TextButton(onPressed: () {}, child: const Text('تواصل معنا')),
-                TextButton(onPressed: () {}, child: const Text('ألعابي')),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed("/games");
+                  },
+                  child: const Text('العب'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed("/mygames");
+                  },
+                  child: const Text('تواصل معنا'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed("/contactus");
+                  },
+                  child: const Text('ألعابي'),
+                ),
                 const SizedBox(width: 8),
                 InkWell(
                   onTap: () {
-                    Get.toNamed("/home");
+                    Get.offAllNamed("/home");
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
