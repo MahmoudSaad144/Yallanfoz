@@ -69,8 +69,13 @@ class _CountryCodePickerFieldState extends State<CountryCodePickerField> {
               },
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              border: Border(
+                right: BorderSide(color: Colors.amberAccent, width: 2.0),
+              ),
+            ),
             child: Text(
               selectedPhoneCode,
               style: const TextStyle(

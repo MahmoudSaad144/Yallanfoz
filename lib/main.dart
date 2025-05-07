@@ -8,7 +8,10 @@ import 'package:yallanfoz/auth/forgetpassword.dart';
 import 'package:yallanfoz/auth/login.dart';
 import 'package:yallanfoz/auth/register.dart';
 import 'package:yallanfoz/home.dart';
+import 'package:yallanfoz/pages/games.dart';
+import 'package:yallanfoz/pages/packages.dart';
 import 'package:yallanfoz/pages/profile.dart';
+import 'package:yallanfoz/pages/settings.dart';
 import 'package:yallanfoz/splash.dart';
 
 Future<void> main() async {
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      home: Splash(),
+      home: Games(),
 
       // Define routes using GetX
       getPages: [
@@ -46,6 +49,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/forgetpassword", page: () => Forgetpassword()),
         GetPage(name: "/home", page: () => Home()),
         GetPage(name: "/profile", page: () => Profile()),
+        GetPage(name: "/packages", page: () => Packages()),
+        GetPage(name: "/settingpage", page: () => Setting()),
+        GetPage(name: "/games", page: () => Games()),
       ],
       // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله
       // Get.offNamed("/login"); // للذهاب مع إزالة الصفحة الحالية

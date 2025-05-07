@@ -60,12 +60,9 @@ class _SplashState extends State<Splash> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black.withOpacity(.9),
-                    Colors.black.withOpacity(.8),
-                    Colors.black.withOpacity(.6),
-                  ],
+                  colors: [const Color(0xFFff9a9e), const Color(0xFFfad0c4)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
             ),
@@ -92,7 +89,7 @@ class _SplashState extends State<Splash> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Color(0xFFFFECB3),
+                                color: Colors.orange[700],
                               ),
                             ),
                           ),
@@ -128,7 +125,7 @@ class _SplashState extends State<Splash> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Color(0xFFFFECB3),
+                                color: Colors.orange[700],
                               ),
                             ),
                           ),

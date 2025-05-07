@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
   final String name;
   final dynamic photo;
   const AppbarComponent({
     super.key,
-    required this.title,
     required this.name,
     required this.photo,
+    required String title,
   });
 
   @override
@@ -38,7 +37,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                 } else if (value == 'mygames') {
                   Get.toNamed("/mygames");
                 } else if (value == 'settings') {
-                  Get.toNamed("/settings");
+                  Get.toNamed("/settingpage");
                 } else if (value == 'logout') {
                   Get.offAllNamed("/login");
                 }
@@ -66,7 +65,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                       value: 'settings',
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [Icon(Icons.settings), Text('الاعدادات')],
+                        children: [Icon(Icons.settings), Text('الإعدادات')],
                       ),
                     ),
                     const PopupMenuItem(
@@ -102,7 +101,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    Get.toNamed("/package");
+                    Get.toNamed("/packages");
                   },
                   icon: const Icon(Icons.add, size: 18),
                   label: const Text('شراء العاب جديدة'),
@@ -155,7 +154,8 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                         ' يلا نفوز ',
                         style: TextStyle(
                           fontFamily: "Cario",
-                          color: Colors.deepOrange,
+                          color: Colors.orange[700],
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],

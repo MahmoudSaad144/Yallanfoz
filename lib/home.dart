@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yallanfoz/components/appbar.dart';
 
 class Home extends StatefulWidget {
@@ -39,7 +40,10 @@ class __Home extends State<Home> {
                     padding: EdgeInsets.symmetric(vertical: 20),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFF1E1E2F), Color(0xFFFFD700)],
+                        colors: [
+                          const Color(0xFFff9a9e),
+                          const Color(0xFFfad0c4),
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -60,7 +64,7 @@ class __Home extends State<Home> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Color(0xFFFFECB3),
+                                color: Colors.orange[700],
                               ),
                             ),
                             SizedBox(width: 10),
@@ -79,14 +83,14 @@ class __Home extends State<Home> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Color(0xFFFFECB3),
+                                color: Colors.orange[700],
                               ),
                             ),
                           ],
                         ),
                         SizedBox(height: 5),
                         Text(
-                          " تحدي الاصدقاء في لعبة سؤال وجاوب مع وسائل مساعدة ",
+                          " تحدي الاصدقاء في لعبة سؤال وجواب مع وسائل مساعدة ",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: MediaQuery.of(context).size.width * 0.025,
@@ -103,8 +107,10 @@ class __Home extends State<Home> {
                         ),
                         SizedBox(height: 15),
                         MaterialButton(
-                          onPressed: () {},
-                          color: Color(0xFFF4A300),
+                          onPressed: () {
+                            Get.toNamed("/games");
+                          },
+                          color: Colors.orange[700],
                           textColor: Colors.white,
                           padding: EdgeInsets.all(12),
                           minWidth: 200,
