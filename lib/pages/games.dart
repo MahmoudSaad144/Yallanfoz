@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallanfoz/components/showcustomdialog.dart';
 import 'package:yallanfoz/components/appbar.dart';
 
 class Games extends StatefulWidget {
@@ -13,69 +15,164 @@ class _GamesPageState extends State<Games> {
   // بيانات الباقات
   final List<Map<String, dynamic>> games = [
     {
+      'id': 1,
       'name': ' المطاعم',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
     },
     {
+      'id': 2,
       'name': ' رياضة',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالرياضة  ',
     },
     {
+      'id': 3,
       'name': ' افلام',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
     },
     {
+      'id': 4,
       'name': ' فن',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
     },
     {
+      'id': 5,
       'name': ' اسم اللاعب',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
     },
     {
+      'id': 6,
       'name': ' مهن',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
     },
     {
+      'id': 7,
       'name': ' الدوريات ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
     {
+      'id': 8,
       'name': ' ملاعب ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
     {
+      'id': 9,
       'name': ' سيارات ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
     {
+      'id': 10,
       'name': ' ركز  ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
     {
+      'id': 11,
       'name': ' عام ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
     {
+      'id': 12,
       'name': ' تاريخ ',
       'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' خمن الدوريات   ',
     },
   ];
 
+  List<Map<String, dynamic>> _countrys = [
+    {
+      'id': 1,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 2,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 3,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 4,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 5,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 6,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 7,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 8,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 9,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 10,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 11,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 12,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 13,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+    {
+      'id': 14,
+      'name': ' الكويت ',
+      'photo': 'https://www.now-time.com/flags/2560/kw.png',
+    },
+  ];
+
   // المتغير لتعقب الفئة المحددة
   List<Map<String, dynamic>> _selected = [];
+
+  TextEditingController search = TextEditingController();
+  Timer? _debounce;
+  int? country;
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    search.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +191,17 @@ class _GamesPageState extends State<Games> {
           Positioned.fill(
             child: SingleChildScrollView(
               child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFFfff5e1), // بيج فاتح جداً
+                      Color(0xFFfdeef4), // بينك شفاف
+                    ],
+                  ),
+                ),
+
                 width: double.infinity,
                 child: Column(
                   children: [
@@ -143,6 +251,183 @@ class _GamesPageState extends State<Games> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+
+                    SizedBox(height: 5),
+
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Container(
+                        margin: EdgeInsets.only(right: listWidth),
+                        child: Wrap(
+                          spacing: 80,
+                          runSpacing: 8,
+                          children: [
+                            Container(
+                              width: width * 0.34,
+                              child: TextFormField(
+                                controller: search,
+                                onChanged: (value) {
+                                  if (_debounce?.isActive ?? false)
+                                    _debounce!.cancel();
+
+                                  _debounce = Timer(
+                                    const Duration(milliseconds: 800),
+                                    () {
+                                      // هنا بيبدأ البحث بعد ما يوقف كتابة لمدة 500ms
+                                      setState(() {
+                                        print("ابحث عن: $value");
+                                        // هنا حط استدعاء البحث من السيرفر مثلاً
+                                      });
+                                    },
+                                  );
+                                },
+                                style: TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
+                                  labelText: " ابحث باسم الفئة ",
+                                  labelStyle: TextStyle(color: Colors.black),
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 2),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: const Color(
+                                        0xFFFFD700,
+                                      ), // لون البوردر العادي
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(
+                                        0xFFFFA500,
+                                      ), // لون البوردر وقت الفوكس
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            Container(
+                              width: width * 0.34,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        country = null;
+                                        print(country);
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            country == null
+                                                ? Colors.grey[200]
+                                                : Colors.grey[300],
+                                        border:
+                                            country == null
+                                                ? Border.all(
+                                                  color: Color(0xFFFFD700),
+                                                  width: 2,
+                                                )
+                                                : null,
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(15),
+                                          bottomRight: Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "All",
+                                          style: TextStyle(
+                                            fontSize: width * 0.025,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      height: 50,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: _countrys.length,
+                                        itemBuilder: (context, index) {
+                                          final isCountrySelected =
+                                              index == country ? true : false;
+                                          return GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                country = index;
+                                                print(country);
+                                              });
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    isCountrySelected
+                                                        ? Colors.grey[200]
+                                                        : Colors.grey[300],
+                                                border:
+                                                    isCountrySelected
+                                                        ? Border.all(
+                                                          color: Color(
+                                                            0xFFFFD700,
+                                                          ),
+                                                          width: 2,
+                                                        )
+                                                        : null,
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(
+                                                  8.0,
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                        Radius.circular(200),
+                                                      ),
+                                                  child: Image.network(
+                                                    _countrys[index]["photo"],
+                                                    width: 40,
+                                                    height: 40,
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
@@ -210,7 +495,22 @@ class _GamesPageState extends State<Games> {
                                           ),
                                           Expanded(
                                             child: Container(
-                                              color: Colors.amber[800],
+                                              decoration: BoxDecoration(
+                                                color: Color.fromARGB(
+                                                  184,
+                                                  238,
+                                                  134,
+                                                  137,
+                                                ),
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft: Radius.circular(
+                                                    9,
+                                                  ),
+                                                  bottomRight: Radius.circular(
+                                                    9,
+                                                  ),
+                                                ),
+                                              ),
                                               alignment: Alignment.center,
                                               child: Text(
                                                 games[i]['name'],
@@ -231,7 +531,7 @@ class _GamesPageState extends State<Games> {
                                         child: IconButton(
                                           icon: Icon(Icons.info_outline),
                                           onPressed:
-                                              () => ShowDialogInfo(
+                                              () => ShowDialogGameInfo(
                                                 context,
                                                 games[i]['description'],
                                               ),
@@ -262,7 +562,24 @@ class _GamesPageState extends State<Games> {
               right: 0,
               width: listWidth,
               child: Container(
-                color: Colors.grey[100],
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFfff8e7), // عاجي ناعم
+                      Color(0xFFfceabb), // دهبي فاتح جدا
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1), // لون الشادو
+                      spreadRadius: 8, // مدى انتشار الشادو
+                      blurRadius: 3, // درجة النعومة
+                      offset: Offset(0, 4), // اتجاه الشادو (يمين/تحت)
+                    ),
+                  ],
+                ),
                 child: ListView.builder(
                   padding: EdgeInsets.all(10),
                   itemCount: _selected.length,
@@ -289,7 +606,7 @@ class _GamesPageState extends State<Games> {
                                   height: 30,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Colors.amber[800],
+                                    color: Color.fromARGB(255, 225, 116, 119),
                                     borderRadius: BorderRadius.vertical(
                                       bottom: Radius.circular(9),
                                     ),
@@ -327,55 +644,56 @@ class _GamesPageState extends State<Games> {
                 ),
               ),
             ),
+          if (_selected.length > 5)
+            Positioned(
+              bottom: 0,
+              right: width * 0.25,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                  horizontal: 20,
+                ),
+                child: Container(
+                  margin: EdgeInsets.only(right: listWidth),
+                  width: width * 0.2,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      List<String> ids =
+                          _selected
+                              .map((item) => item["id"].toString())
+                              .toList();
+                      //بستدعي ال dialog باستخدام Getx
+                      Get.dialog(
+                        MediaQuery(
+                          data: MediaQuery.of(
+                            context,
+                          ).copyWith(viewInsets: EdgeInsets.zero),
+                          child: GameStartDialog(ids: ids),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 8,
+                      backgroundColor: Colors.deepOrange,
+                    ),
+                    child: const Text(
+                      ' تحديد الفرق ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
   }
-}
-
-void ShowDialogInfo(context, String description) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        backgroundColor: Colors.white,
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.warning_amber_rounded,
-              size: 50,
-              color: const Color(0xFFff9a9e),
-            ),
-            SizedBox(height: 10),
-            Text(
-              description,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black87),
-            ),
-          ],
-        ),
-        actionsAlignment: MainAxisAlignment.center,
-        actions: [
-          Container(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onPressed: () {
-                Get.back();
-              },
-
-              child: Text("إلغاء"),
-            ),
-          ),
-        ],
-      );
-    },
-  );
 }

@@ -43,10 +43,10 @@ class _PackagesPageState extends State<Packages> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.72,
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  child: Expanded(
+                Expanded(
+                  flex: 72,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.6,
                     child: ListView.builder(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       itemCount: packages.length,
@@ -122,6 +122,7 @@ class _PackagesPageState extends State<Packages> {
                 ),
                 SizedBox(width: 5),
                 Expanded(
+                  flex: 28,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.6,
                     padding: EdgeInsets.symmetric(vertical: 30),

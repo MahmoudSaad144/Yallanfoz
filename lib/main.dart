@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart'; // استورد GetX
@@ -39,7 +37,7 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      home: Games(),
+      home: Splash(),
 
       // Define routes using GetX
       getPages: [
