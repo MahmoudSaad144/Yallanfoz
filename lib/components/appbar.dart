@@ -131,13 +131,13 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.toNamed("/mygames");
+                    Get.toNamed("/contactus");
                   },
                   child: const Text('تواصل معنا'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.toNamed("/contactus");
+                    Get.toNamed("/mygames");
                   },
                   child: const Text('ألعابي'),
                 ),

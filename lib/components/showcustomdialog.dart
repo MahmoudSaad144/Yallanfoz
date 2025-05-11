@@ -85,23 +85,141 @@ void ShowDialogGameInfo(BuildContext context, String text) {
   );
 }
 
+ShowDialogMyGame(BuildContext context, int? selected) {
+  double Width = MediaQuery.of(context).size.width;
+  double Height = MediaQuery.of(context).size.height;
+  return AnimatedPadding(
+    padding: EdgeInsets.only(bottom: 0),
+    duration: Duration(milliseconds: 200),
+    child: AlertDialog(
+      insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      backgroundColor: Colors.white,
+      contentPadding: EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 0),
+      content: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: Width * 0.4,
+          maxHeight: Height * 0.4,
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // الصف اللي فيه زر الإغلاق
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  // النص في النص
+                  Text(
+                    " المتابعة من حيث توقفت ",
+                    style: TextStyle(
+                      fontSize: Width * 0.025,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  // Spacer عشان النص يفضل في النص
+                  Spacer(),
+                  // زر الإغلاق في أقصى الشمال
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Icon(Icons.close, color: Colors.grey),
+                  ),
+
+                  // Spacer يفصل الإكس عن النص
+                ],
+              ),
+
+              SizedBox(height: 40),
+
+              // النص داخل سكرول لو طويل
+              Text(
+                " لديك لعبة نشطة، هل تريد متابعة اللعب أو الاعادة ؟ ",
+                style: TextStyle(fontSize: Width * 0.02),
+              ),
+              SizedBox(height: 50),
+            ],
+          ),
+        ),
+      ),
+      actionsPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      actionsAlignment: MainAxisAlignment.center,
+      actions: [
+        Container(
+          width: Width * 0.2,
+          height: Height * 0.12,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[100],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onPressed: () {
+              print(selected);
+              //هنطلب api الاول الخاص بحلب اللعبه
+              Get.offAllNamed("/gamepage", arguments: selected);
+            },
+            child: Text("الاستمرار", style: TextStyle(color: Colors.black)),
+          ),
+        ),
+        Container(
+          width: Width * 0.2,
+          height: Height * 0.12,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepOrange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+
+            onPressed: () {
+              Get.dialog(
+                MediaQuery(
+                  data: MediaQuery.of(
+                    context,
+                  ).copyWith(viewInsets: EdgeInsets.zero),
+                  child: GameStartDialog(selected: selected),
+                ),
+              );
+            },
+            child: Text(
+              " البدء من جديد",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 // Show GameStartDialog
 
 class GameStartDialog extends StatefulWidget {
-  final List<String> ids;
+  final dynamic selected;
+  final bool? create;
 
-  const GameStartDialog({super.key, required this.ids});
+  const GameStartDialog({super.key, required this.selected, this.create});
   @override
   State<GameStartDialog> createState() => _GameStartDialogState();
 }
 
 class _GameStartDialogState extends State<GameStartDialog> {
   GlobalKey<FormState> startGame = GlobalKey();
+  TextEditingController teamname = TextEditingController();
   TextEditingController firstTeam = TextEditingController();
   TextEditingController secondTeam = TextEditingController();
   bool isLoading = false;
   @override
   void dispose() {
+    teamname.dispose();
     firstTeam.dispose();
     secondTeam.dispose();
     super.dispose();
@@ -115,9 +233,9 @@ class _GameStartDialogState extends State<GameStartDialog> {
       padding: EdgeInsets.only(bottom: 0),
       duration: Duration(milliseconds: 200),
       child: Transform.translate(
-        offset: Offset(0, -50),
+        offset: Offset(0, -40),
         child: AlertDialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -168,9 +286,53 @@ class _GameStartDialogState extends State<GameStartDialog> {
                         // Spacer يفصل الإكس عن النص
                       ],
                     ),
+                    SizedBox(height: 20),
 
-                    SizedBox(height: 12),
-
+                    if (widget.create != null) ...[
+                      Container(
+                        width: Width * 0.3,
+                        child: TextFormField(
+                          controller: teamname,
+                          validator: (teamname) {
+                            if (teamname!.isEmpty) {
+                              return " هذا الحقل مطلوب ";
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUnfocus,
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            labelText: " اسم اللعبة",
+                            labelStyle: TextStyle(color: Colors.black),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 2),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: const Color.fromARGB(255, 208, 114, 151),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromARGB(255, 208, 114, 151),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
                     // النص داخل سكرول لو طويل
                     Wrap(
                       spacing: 50,
@@ -178,124 +340,113 @@ class _GameStartDialogState extends State<GameStartDialog> {
                       children: [
                         Container(
                           width: Width * 0.3,
-                          child: Column(
-                            children: [
-                              Text(
-                                " الفريق الأول ",
-                                style: TextStyle(
-                                  fontSize: Width * 0.025,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              TextFormField(
-                                controller: firstTeam,
-                                validator: (firstTeam) {
-                                  if (firstTeam!.isEmpty) {
-                                    return " هذا الحقل مطلوب ";
-                                  }
-                                  return null;
-                                },
-                                autovalidateMode: AutovalidateMode.onUnfocus,
+                          child: TextFormField(
+                            controller: firstTeam,
+                            validator: (firstTeam) {
+                              if (firstTeam!.isEmpty) {
+                                return " هذا الحقل مطلوب ";
+                              }
+                              return null;
+                            },
+                            autovalidateMode: AutovalidateMode.onUnfocus,
 
-                                style: TextStyle(color: Colors.black),
-                                decoration: InputDecoration(
-                                  labelText: " اسم الفريق الأول  ",
-                                  labelStyle: TextStyle(color: Colors.black),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFFFD700,
-                                      ), // لون البوردر العادي
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
-                                      ), // لون البوردر وقت الفوكس
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(
+                              labelText: " اسم الفريق الأول  ",
+                              labelStyle: TextStyle(color: Colors.black),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(width: 2),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
                                 ),
                               ),
-                            ],
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: const Color.fromARGB(
+                                    255,
+                                    208,
+                                    114,
+                                    151,
+                                  ), // لون البوردر العادي
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(
+                                    255,
+                                    208,
+                                    114,
+                                    151,
+                                  ), // لون البوردر وقت الفوكس
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
 
                         Container(
                           width: Width * 0.3,
-                          child: Column(
-                            children: [
-                              Text(
-                                " الفريق الثاني ",
-                                style: TextStyle(
-                                  fontSize: Width * 0.025,
-                                  fontWeight: FontWeight.w400,
+                          child: TextFormField(
+                            controller: secondTeam,
+                            validator: (secondTeam) {
+                              if (secondTeam!.isEmpty) {
+                                return " هذا الحقل مطلوب ";
+                              }
+                              return null;
+                            },
+                            autovalidateMode: AutovalidateMode.onUnfocus,
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(
+                              labelText: " اسم الفريق الثاني  ",
+                              labelStyle: TextStyle(color: Colors.black),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(width: 2),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
                                 ),
                               ),
-                              SizedBox(height: 8),
-                              TextFormField(
-                                controller: secondTeam,
-                                validator: (secondTeam) {
-                                  if (secondTeam!.isEmpty) {
-                                    return " هذا الحقل مطلوب ";
-                                  }
-                                  return null;
-                                },
-                                autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.black),
-                                decoration: InputDecoration(
-                                  labelText: " اسم الفريق الثاني  ",
-                                  labelStyle: TextStyle(color: Colors.black),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFFFD700,
-                                      ), // لون البوردر العادي
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
-                                      ), // لون البوردر وقت الفوكس
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: const Color.fromARGB(
+                                    255,
+                                    208,
+                                    114,
+                                    151,
+                                  ), // لون البوردر العادي
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
                                 ),
                               ),
-                            ],
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(
+                                    255,
+                                    208,
+                                    114,
+                                    151,
+                                  ), // لون البوردر وقت الفوكس
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -320,7 +471,7 @@ class _GameStartDialogState extends State<GameStartDialog> {
                       isLoading = true;
                     });
                     print(
-                      "${widget.ids}  ${firstTeam.text}  ${secondTeam.text} $isLoading",
+                      "${widget.selected}  ${firstTeam.text}  ${secondTeam.text} ${teamname.text} $isLoading",
                     );
                     await Future.delayed(
                       Duration(seconds: 3),
@@ -329,10 +480,8 @@ class _GameStartDialogState extends State<GameStartDialog> {
                       isLoading = false;
                     });
                     print(isLoading);
-                    Get.offNamed(
-                      "/home",
-                      arguments: widget.ids,
-                    ); // هيكون بدل دي صفحه اللعبه مع تمرير ليها ال ids
+                    //هنا بعد ما ال api ينشي العبه  لازم ارجع id اللعبه وابعته بدل ال selected
+                    Get.offAllNamed("/gamepage", arguments: widget.selected);
                   }
                 },
                 child:

@@ -36,21 +36,26 @@ class _CountryOnlyPickerFieldState extends State<CountryOnlyPickerField> {
       child: InputDecorator(
         decoration: InputDecoration(
           labelText: widget.label,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Colors.black),
           border: OutlineInputBorder(
             borderSide: BorderSide(width: 2),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: const Color(0xFFFFD700), // لون البوردر العادي
+              color: const Color(0xFFfff5e1), // لون البوردر العادي
               width: 2,
             ),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFFFFA500), // لون البوردر وقت الفوكس
+              color: Color.fromARGB(
+                255,
+                208,
+                114,
+                151,
+              ), // لون البوردر وقت الفوكس
               width: 2,
             ),
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -58,7 +63,7 @@ class _CountryOnlyPickerFieldState extends State<CountryOnlyPickerField> {
         ),
         child: Text(
           selectedCountry,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );

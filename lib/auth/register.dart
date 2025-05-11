@@ -41,7 +41,11 @@ class _SignupState extends State<Signup> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(top: 1, left: 40, right: 40),
         decoration: BoxDecoration(
-          color: Color(0xFF1E1E2F),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [const Color(0xFFff9a9e), const Color(0xFFfad0c4)],
+          ),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150)),
         ),
         child: ListView(
@@ -78,10 +82,10 @@ class _SignupState extends State<Signup> {
                                 },
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " الأسم ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 2),
                                     borderRadius: BorderRadius.all(
@@ -91,7 +95,7 @@ class _SignupState extends State<Signup> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -101,8 +105,11 @@ class _SignupState extends State<Signup> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -149,10 +156,10 @@ class _SignupState extends State<Signup> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: "البريد الاكتروني",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 2),
                                     borderRadius: BorderRadius.all(
@@ -162,7 +169,7 @@ class _SignupState extends State<Signup> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -172,8 +179,11 @@ class _SignupState extends State<Signup> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -215,10 +225,10 @@ class _SignupState extends State<Signup> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
                                 obscureText: !isPasswordVisible,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " كلمة المرور  ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -229,7 +239,7 @@ class _SignupState extends State<Signup> {
                                       isPasswordVisible
                                           ? Icons.visibility_off
                                           : Icons.visibility,
-                                      color: Color(0xFFF4A300),
+                                      color: Colors.deepOrange,
                                     ),
                                   ),
                                   border: OutlineInputBorder(
@@ -241,7 +251,7 @@ class _SignupState extends State<Signup> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -251,8 +261,11 @@ class _SignupState extends State<Signup> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -281,10 +294,10 @@ class _SignupState extends State<Signup> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
                                 obscureText: !isConfirmPasswordVisible,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " تاكيد كلمة المرور ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -296,7 +309,7 @@ class _SignupState extends State<Signup> {
                                       isConfirmPasswordVisible
                                           ? Icons.visibility_off
                                           : Icons.visibility,
-                                      color: Color(0xFFF4A300),
+                                      color: Colors.deepOrange,
                                     ),
                                   ),
                                   border: OutlineInputBorder(
@@ -308,7 +321,7 @@ class _SignupState extends State<Signup> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -318,8 +331,11 @@ class _SignupState extends State<Signup> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -367,7 +383,7 @@ class _SignupState extends State<Signup> {
                           children: [
                             Text(
                               "هل لديك حساب بالفعل : ",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
                             ),
                             TextButton(
                               onPressed: () {
@@ -375,7 +391,7 @@ class _SignupState extends State<Signup> {
                               },
                               child: Text(
                                 " تسجيل الدخول ",
-                                style: TextStyle(color: Color(0xFFFFECB3)),
+                                style: TextStyle(color: Colors.deepOrange),
                               ),
                             ),
                           ],

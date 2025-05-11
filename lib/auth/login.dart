@@ -29,7 +29,11 @@ class __LoginState extends State<Login> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(top: 1, left: 40, right: 40),
         decoration: BoxDecoration(
-          color: Color(0xFF1E1E2F),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [const Color(0xFFff9a9e), const Color(0xFFfad0c4)],
+          ),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150)),
         ),
         child: ListView(
@@ -62,10 +66,10 @@ class __LoginState extends State<Login> {
                           },
                           //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                           autovalidateMode: AutovalidateMode.onUnfocus,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             labelText: "البريد الاكتروني او اسم المتسخدم",
-                            labelStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Colors.black),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 2),
                               borderRadius: BorderRadius.all(
@@ -75,7 +79,7 @@ class __LoginState extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: const Color(
-                                  0xFFFFD700,
+                                  0xFFfff5e1,
                                 ), // لون البوردر العادي
                                 width: 2,
                               ),
@@ -85,8 +89,11 @@ class __LoginState extends State<Login> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(
-                                  0xFFFFA500,
+                                color: Color.fromARGB(
+                                  255,
+                                  208,
+                                  114,
+                                  151,
                                 ), // لون البوردر وقت الفوكس
                                 width: 2,
                               ),
@@ -108,11 +115,11 @@ class __LoginState extends State<Login> {
                           },
                           //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                           autovalidateMode: AutovalidateMode.onUnfocus,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: " كلمة المرور ",
-                            labelStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Colors.black),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 2),
                               borderRadius: BorderRadius.all(
@@ -122,7 +129,7 @@ class __LoginState extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: const Color(
-                                  0xFFFFD700,
+                                  0xFFfff5e1,
                                 ), // لون البوردر العادي
                                 width: 2,
                               ),
@@ -132,8 +139,11 @@ class __LoginState extends State<Login> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(
-                                  0xFFFFA500,
+                                color: Color.fromARGB(
+                                  255,
+                                  208,
+                                  114,
+                                  151,
                                 ), // لون البوردر وقت الفوكس
                                 width: 2,
                               ),
@@ -153,14 +163,14 @@ class __LoginState extends State<Login> {
                               },
                               child: Text(
                                 "نسيت كلمة المرور ؟",
-                                style: TextStyle(color: Color(0xFFFFECB3)),
+                                style: TextStyle(color: Colors.deepOrange),
                               ),
                             ),
                             Row(
                               children: [
                                 Text(
                                   " ليس لديك حساب : ",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.black),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -168,7 +178,7 @@ class __LoginState extends State<Login> {
                                   },
                                   child: Text(
                                     "سجل الان ",
-                                    style: TextStyle(color: Color(0xFFFFECB3)),
+                                    style: TextStyle(color: Colors.deepOrange),
                                   ),
                                 ),
                               ],

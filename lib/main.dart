@@ -6,7 +6,9 @@ import 'package:yallanfoz/auth/forgetpassword.dart';
 import 'package:yallanfoz/auth/login.dart';
 import 'package:yallanfoz/auth/register.dart';
 import 'package:yallanfoz/home.dart';
+import 'package:yallanfoz/pages/gamepage.dart';
 import 'package:yallanfoz/pages/games.dart';
+import 'package:yallanfoz/pages/mygames.dart';
 import 'package:yallanfoz/pages/packages.dart';
 import 'package:yallanfoz/pages/profile.dart';
 import 'package:yallanfoz/pages/settings.dart';
@@ -50,6 +52,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/packages", page: () => Packages()),
         GetPage(name: "/settingpage", page: () => Setting()),
         GetPage(name: "/games", page: () => Games()),
+        GetPage(name: "/mygames", page: () => Mygames()),
+        GetPage(name: "/gamepage", page: () => Gamepage()),
       ],
       // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله
       // Get.offNamed("/login"); // للذهاب مع إزالة الصفحة الحالية

@@ -44,7 +44,11 @@ class _SettingState extends State<Setting> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(top: 10, left: 40, right: 40),
         decoration: BoxDecoration(
-          color: Color(0xFF1E1E2F),
+          gradient: LinearGradient(
+            colors: [Color(0xFFff9a9e), Color(0xFFfad0c4)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150)),
         ),
         child: ListView(
@@ -55,7 +59,7 @@ class _SettingState extends State<Setting> {
                   Text(
                     "الإعدادات",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: MediaQuery.of(context).size.width * 0.03,
                       fontWeight: FontWeight.bold,
                     ),
@@ -65,7 +69,7 @@ class _SettingState extends State<Setting> {
                       tileColor: Colors.black,
                       title: Text(
                         " الأشعارات",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
 
                       // دي خواصه لو انا عايز اديله cutom colors
@@ -92,7 +96,7 @@ class _SettingState extends State<Setting> {
                                 child: Text(
                                   "تغير كلمة المرور ",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
@@ -118,10 +122,10 @@ class _SettingState extends State<Setting> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
                                 obscureText: !isPasswordVisible,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " كلمة المرور الجديده  ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -132,7 +136,7 @@ class _SettingState extends State<Setting> {
                                       isPasswordVisible
                                           ? Icons.visibility_off
                                           : Icons.visibility,
-                                      color: Color(0xFFF4A300),
+                                      color: Colors.deepOrange,
                                     ),
                                   ),
                                   border: OutlineInputBorder(
@@ -144,7 +148,7 @@ class _SettingState extends State<Setting> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -154,8 +158,11 @@ class _SettingState extends State<Setting> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -184,10 +191,10 @@ class _SettingState extends State<Setting> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
                                 obscureText: !isConfirmPasswordVisible,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " تاكيد كلمة المرور ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -199,7 +206,7 @@ class _SettingState extends State<Setting> {
                                       isConfirmPasswordVisible
                                           ? Icons.visibility_off
                                           : Icons.visibility,
-                                      color: Color(0xFFF4A300),
+                                      color: Colors.deepOrange,
                                     ),
                                   ),
                                   border: OutlineInputBorder(
@@ -211,7 +218,7 @@ class _SettingState extends State<Setting> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -221,8 +228,11 @@ class _SettingState extends State<Setting> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),

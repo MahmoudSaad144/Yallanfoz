@@ -73,11 +73,14 @@ class _OtpDialogState extends State<OtpDialog> {
                 decoration: InputDecoration(
                   counterText: '',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFFFFD700)),
+                    borderSide: BorderSide(color: Color(0xFFfff5e1)),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFFFFA500), width: 2),
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 208, 114, 151),
+                      width: 2,
+                    ),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),

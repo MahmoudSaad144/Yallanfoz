@@ -295,8 +295,11 @@ class _GamesPageState extends State<Games> {
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFFFD700,
+                                      color: const Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -306,8 +309,11 @@ class _GamesPageState extends State<Games> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -348,7 +354,12 @@ class _GamesPageState extends State<Games> {
                                         border:
                                             country == null
                                                 ? Border.all(
-                                                  color: Color(0xFFFFD700),
+                                                  color: Color.fromARGB(
+                                                    255,
+                                                    208,
+                                                    114,
+                                                    151,
+                                                  ),
                                                   width: 2,
                                                 )
                                                 : null,
@@ -393,8 +404,11 @@ class _GamesPageState extends State<Games> {
                                                 border:
                                                     isCountrySelected
                                                         ? Border.all(
-                                                          color: Color(
-                                                            0xFFFFD700,
+                                                          color: Color.fromARGB(
+                                                            255,
+                                                            208,
+                                                            114,
+                                                            151,
                                                           ),
                                                           width: 2,
                                                         )
@@ -473,7 +487,12 @@ class _GamesPageState extends State<Games> {
                                     side:
                                         isSelected
                                             ? BorderSide(
-                                              color: Color(0xFFFFD700),
+                                              color: Color.fromARGB(
+                                                255,
+                                                208,
+                                                114,
+                                                151,
+                                              ),
                                               width: 4,
                                             )
                                             : BorderSide.none,
@@ -668,7 +687,7 @@ class _GamesPageState extends State<Games> {
                           data: MediaQuery.of(
                             context,
                           ).copyWith(viewInsets: EdgeInsets.zero),
-                          child: GameStartDialog(ids: ids),
+                          child: GameStartDialog(selected: ids, create: true),
                         ),
                       );
                     },

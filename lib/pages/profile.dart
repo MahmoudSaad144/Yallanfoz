@@ -58,7 +58,11 @@ class _ProfileState extends State<Profile> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(top: 15, left: 40, right: 40),
         decoration: BoxDecoration(
-          color: Color(0xFF1E1E2F),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [const Color(0xFFff9a9e), const Color(0xFFfad0c4)],
+          ),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150)),
         ),
         child: ListView(
@@ -226,10 +230,10 @@ class _ProfileState extends State<Profile> {
                                 },
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: " الأسم ",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 2),
                                     borderRadius: BorderRadius.all(
@@ -239,7 +243,7 @@ class _ProfileState extends State<Profile> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -249,8 +253,11 @@ class _ProfileState extends State<Profile> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
@@ -297,10 +304,10 @@ class _ProfileState extends State<Profile> {
                                 //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
                                 keyboardType: TextInputType.emailAddress,
                                 autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   labelText: "البريد الاكتروني",
-                                  labelStyle: TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.black),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 2),
                                     borderRadius: BorderRadius.all(
@@ -310,7 +317,7 @@ class _ProfileState extends State<Profile> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: const Color(
-                                        0xFFFFD700,
+                                        0xFFfff5e1,
                                       ), // لون البوردر العادي
                                       width: 2,
                                     ),
@@ -320,8 +327,11 @@ class _ProfileState extends State<Profile> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFA500,
+                                      color: Color.fromARGB(
+                                        255,
+                                        208,
+                                        114,
+                                        151,
                                       ), // لون البوردر وقت الفوكس
                                       width: 2,
                                     ),
