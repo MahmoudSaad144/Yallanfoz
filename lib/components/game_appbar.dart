@@ -22,7 +22,9 @@ class GameappbarComponent extends StatelessWidget
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
+          boxShadow: [
+            BoxShadow(color: Colors.black26, blurRadius: 20, spreadRadius: 10),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +54,7 @@ class GameappbarComponent extends StatelessWidget
                     },
                     child: Container(
                       width: width * 0.18,
-                      height: height * 0.13,
+                      height: height * 0.1,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white, width: 2),
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -64,7 +66,7 @@ class GameappbarComponent extends StatelessWidget
                           Text(
                             "دور فريق : red",
                             style: TextStyle(
-                              fontSize: width * 0.017,
+                              fontSize: width * 0.015,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -169,5 +171,5 @@ class GameappbarComponent extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(75);
+  Size get preferredSize => const Size.fromHeight(60);
 }

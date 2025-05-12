@@ -13,24 +13,99 @@ class Mygames extends StatefulWidget {
 
 class _MygamesPageState extends State<Mygames> {
   // بيانات الباقات
-  final List<Map<String, dynamic>> games = [
+  final List<Map<String, dynamic>> mygames = [
     {
       'id': 1,
       'name': ' تحدي الأسرة ',
-      'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
+      'games': [
+        {
+          'name': 'ركز شوية',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'سيارات',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'ملاعب ',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'خمن اللاعب',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'عواصم',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'فن',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+      ],
     },
     {
       'id': 2,
       'name': ' الاخوات ',
-      'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالرياضة  ',
+      'games': [
+        {
+          'name': 'ركز شوية',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'سيارات',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'ملاعب ',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'خمن اللاعب',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'عواصم',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'فن',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+      ],
     },
     {
       'id': 3,
       'name': ' الأصدقاء ',
-      'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
       'description': ' يحتوي علي اسئلة تتعلق بالمطاعم و الاكلات  ',
+      'games': [
+        {
+          'name': 'ركز شوية',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'سيارات',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'ملاعب ',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'خمن اللاعب',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'عواصم',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+        {
+          'name': 'فن',
+          'photo': 'https://giftdose.dev-swift.com/imgs/users/default-img.png',
+        },
+      ],
     },
   ];
 
@@ -231,14 +306,16 @@ class _MygamesPageState extends State<Mygames> {
                           physics: NeverScrollableScrollPhysics(),
                           gridDelegate:
                               SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: 180,
+                                maxCrossAxisExtent: 250,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 5,
-                                mainAxisExtent: 200,
+                                mainAxisExtent: 300,
                               ),
-                          itemCount: games.length,
+                          itemCount: mygames.length,
                           itemBuilder: (ctx, i) {
                             final isSelected = _selected == i ? true : false;
+                            final List<Map<String, dynamic>> game =
+                                mygames[i]['games'];
                             return GestureDetector(
                               onTap: () {
                                 setState(() {
@@ -261,16 +338,57 @@ class _MygamesPageState extends State<Mygames> {
                                   children: [
                                     Column(
                                       children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.vertical(
-                                            top: Radius.circular(15),
-                                          ),
-                                          child: Image.network(
-                                            games[i]['photo'],
-                                            height: 130,
-                                            width: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        SizedBox(height: height * 0.07),
+                                        GridView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          gridDelegate:
+                                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 90,
+                                                crossAxisSpacing: 0,
+                                                mainAxisSpacing: 0,
+                                                mainAxisExtent: 110,
+                                              ),
+                                          itemCount: game.length,
+                                          itemBuilder: (ctx, index) {
+                                            return Column(
+                                              children: [
+                                                Expanded(
+                                                  flex: 4,
+                                                  child: ClipRRect(
+                                                    child: Image.network(
+                                                      game[index]['photo'],
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Color.fromARGB(
+                                                        184,
+                                                        195,
+                                                        109,
+                                                        111,
+                                                      ),
+                                                    ),
+                                                    alignment: Alignment.center,
+                                                    child: Text(
+                                                      game[index]['name'],
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: width * 0.012,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          },
                                         ),
                                         Expanded(
                                           child: Container(
@@ -288,7 +406,7 @@ class _MygamesPageState extends State<Mygames> {
                                             ),
                                             alignment: Alignment.center,
                                             child: Text(
-                                              games[i]['name'],
+                                              mygames[i]['name'],
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                 color: Colors.white,
@@ -309,8 +427,9 @@ class _MygamesPageState extends State<Mygames> {
                                         height: height * 0.08,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(9),
+                                            topRight: Radius.circular(9),
                                           ),
                                           gradient: LinearGradient(
                                             begin: Alignment.topLeft,
