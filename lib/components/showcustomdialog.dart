@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -273,17 +275,13 @@ class _GameStartDialogState extends State<GameStartDialog> {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        // Spacer عشان النص يفضل في النص
                         Spacer(),
-                        // زر الإغلاق في أقصى الشمال
                         GestureDetector(
                           onTap: () {
                             Get.back();
                           },
                           child: Icon(Icons.close, color: Colors.grey),
                         ),
-
-                        // Spacer يفصل الإكس عن النص
                       ],
                     ),
                     SizedBox(height: 20),
@@ -513,6 +511,190 @@ class _GameStartDialogState extends State<GameStartDialog> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// Phone Helper
+class HelperPhoneDialog extends StatefulWidget {
+  final String helperteam;
+
+  const HelperPhoneDialog({super.key, required this.helperteam});
+  @override
+  State<HelperPhoneDialog> createState() => _HelperPhoneDialogState();
+}
+
+class _HelperPhoneDialogState extends State<HelperPhoneDialog> {
+  bool timestart = false;
+  int _secondsLeft = 60;
+  Timer? _countdownTimer;
+
+  void _startCountdown() {
+    print(widget.helperteam);
+    setState(() {
+      timestart = true;
+      _secondsLeft = 60;
+    });
+    _countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _secondsLeft--;
+        if (_secondsLeft <= 0) {
+          timer.cancel();
+          Get.back(); // يرجع الشاشة تلقائياً
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _countdownTimer?.cancel();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double Width = MediaQuery.of(context).size.width;
+    double Height = MediaQuery.of(context).size.height;
+    return AnimatedPadding(
+      padding: EdgeInsets.only(bottom: 0),
+      duration: Duration(milliseconds: 200),
+      child: AlertDialog(
+        insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        backgroundColor: Colors.grey[400],
+        contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0),
+        content: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: Width * 0.4,
+            minHeight: Height * 0.6,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Spacer(),
+                      // النص في النص
+                      Text(
+                        " اتصل بصديق ",
+                        style: TextStyle(
+                          fontSize: Width * 0.03,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(),
+                      if (!timestart)
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Icon(Icons.close, color: Colors.grey),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+              // هنا نستخدم شرط
+              if (!timestart) ...[
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      " صديقك اللي يعرف كل شي هذا وقته، دق عليه ",
+                      style: TextStyle(fontSize: Width * 0.025),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Icon(Icons.phone, color: Colors.green, size: Width * 0.05),
+              ] else ...[
+                // عرض العدّاد
+                Expanded(
+                  child: Text(
+                    " عندك دقيقة وحدة تقدر تتصل فيها على شخص ممكن يكون عارف الإجابة ",
+                    style: TextStyle(fontSize: Width * 0.025),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: 20),
+
+                Expanded(
+                  child: Center(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        // الدائرة المتقلصة
+                        Container(
+                          width: Width * 0.15,
+                          height: Width * 0.15,
+                          child: CircularProgressIndicator(
+                            value: _secondsLeft / 60,
+                            strokeWidth: 5,
+                          ),
+                        ),
+                        // الرقم اللي في الوسط
+                        Text(
+                          "${_secondsLeft}s",
+                          style: TextStyle(
+                            fontSize: Width * 0.03,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+
+              SizedBox(height: 50),
+            ],
+          ),
+        ),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actions: [
+          if (!timestart) ...[
+            Container(
+              width: Width * 0.2,
+              height: Height * 0.12,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepOrange,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+
+                onPressed: () {
+                  setState(() {
+                    _startCountdown();
+                  });
+                },
+                child: Text("ابدأ ", style: TextStyle(color: Colors.white)),
+              ),
+            ),
+            Container(
+              width: Width * 0.2,
+              height: Height * 0.12,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () => Get.back(),
+                child: Text("إلغاء", style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ],
+        ],
       ),
     );
   }

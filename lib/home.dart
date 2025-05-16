@@ -20,12 +20,12 @@ class __Home extends State<Home> {
     String? name = "Mahmoud Saad";
     String? photo = "https://giftdose.dev-swift.com/imgs/users/default-img.png";
     // String? email = "MahmoudSaad@gmail.com";
-
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppbarComponent(title: "Home", name: name, photo: photo),
       body: Container(
-        //MediaQuery.of(context).size.width علشان اجيب عرض الشاشه كامل
-        width: MediaQuery.of(context).size.width,
+        width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(150)),
         ),
@@ -35,7 +35,7 @@ class __Home extends State<Home> {
               child: Column(
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width,
+                    width: width,
                     height: 330,
                     padding: EdgeInsets.symmetric(vertical: 20),
                     decoration: BoxDecoration(
@@ -49,6 +49,7 @@ class __Home extends State<Home> {
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(150),
+                        bottomRight: Radius.circular(150),
                       ),
                     ),
                     child: Column(
@@ -61,8 +62,7 @@ class __Home extends State<Home> {
                               "يلا",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.05,
+                                fontSize: width * 0.05,
                                 fontFamily: "Cairo",
                                 color: Colors.orange[700],
                               ),
@@ -80,8 +80,7 @@ class __Home extends State<Home> {
                               "نفوز",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.05,
+                                fontSize: width * 0.05,
                                 fontFamily: "Cairo",
                                 color: Colors.orange[700],
                               ),
@@ -93,7 +92,7 @@ class __Home extends State<Home> {
                           " تحدي الاصدقاء في لعبة سؤال وجواب مع وسائل مساعدة ",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width * 0.025,
+                            fontSize: width * 0.025,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -102,7 +101,7 @@ class __Home extends State<Home> {
                           "  لعبة جماعية تفاعلية تختبروا  بها معرفتكم وثقافتكم مع جماعتكم  ",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: MediaQuery.of(context).size.width * 0.02,
+                            fontSize: width * 0.02,
                           ),
                         ),
                         SizedBox(height: 15),
@@ -133,6 +132,210 @@ class __Home extends State<Home> {
                 ],
               ),
             ),
+            SizedBox(height: 30),
+
+            Container(
+              padding: EdgeInsets.all(8),
+              child: Wrap(
+                spacing: 20,
+                runSpacing: 8,
+                children: [
+                  Container(
+                    width: width * 0.3,
+                    height: height * 0.95,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Colors.grey[300],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 20,
+                          spreadRadius: 8,
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.all(8),
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          " اتصل بصديق ",
+                          style: TextStyle(
+                            fontSize: width * 0.03,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+
+                        Text(
+                          " صديقك اللي يعرف كل شي هذا وقته دق عليه ! ",
+                          style: TextStyle(fontSize: width * 0.025),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
+
+                        Icon(
+                          Icons.phone,
+                          size: width * 0.1,
+                          color: Colors.green,
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          width: width * 0.5,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            color: Colors.deepOrange,
+                          ),
+                          child: Text(
+                            "تستخدمها بعد ماتشوف السؤال",
+                            style: TextStyle(
+                              fontSize: width * 0.023,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    width: width * 0.3,
+                    height: height * 0.95,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Colors.grey[300],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 20,
+                          spreadRadius: 8,
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.all(8),
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          " اتصل بصديق ",
+                          style: TextStyle(
+                            fontSize: width * 0.03,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+
+                        Expanded(
+                          child: Text(
+                            " !متردد بجوابين؟ هذي لك جاوب بالأثنين عشان تضمن النقاط ",
+                            style: TextStyle(fontSize: width * 0.025),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+
+                        Icon(
+                          Icons.looks_two_outlined,
+                          size: width * 0.1,
+                          color: Colors.lightBlue,
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          width: width * 0.5,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            color: Colors.deepOrange,
+                          ),
+                          child: Text(
+                            "تستخدمها بعد ماتشوف السؤال",
+                            style: TextStyle(
+                              fontSize: width * 0.023,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    width: width * 0.3,
+                    height: height * 0.95,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Colors.grey[300],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 20,
+                          spreadRadius: 8,
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.all(8),
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          " اتصل بصديق ",
+                          style: TextStyle(
+                            fontSize: width * 0.03,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+
+                        Expanded(
+                          child: Text(
+                            " جاوب صح، و اخصم عدد النقاط اللي فزت فيها من نقاط الفريق الثاني ",
+                            style: TextStyle(fontSize: width * 0.025),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+
+                        Icon(
+                          Icons.swap_vert,
+                          size: width * 0.1,
+                          color: Colors.brown,
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          width: width * 0.5,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            color: Colors.deepOrange,
+                          ),
+                          child: Text(
+                            "تستخدمها قبل ماتشوف السؤال",
+                            style: TextStyle(
+                              fontSize: width * 0.023,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 50),
           ],
         ),
       ),

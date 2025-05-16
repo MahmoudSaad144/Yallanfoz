@@ -14,6 +14,7 @@ import 'package:yallanfoz/pages/packages.dart';
 import 'package:yallanfoz/pages/profile.dart';
 import 'package:yallanfoz/pages/question.dart';
 import 'package:yallanfoz/pages/settings.dart';
+import 'package:yallanfoz/pages/whoanswer.dart';
 import 'package:yallanfoz/splash.dart';
 
 Future<void> main() async {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      home: Gamepage(),
+      home: Splash(),
 
       // Define routes using GetX
       getPages: [
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/gamepage", page: () => Gamepage()),
         GetPage(name: "/question", page: () => Questionpage()),
         GetPage(name: "/answer", page: () => Answerpage()),
+        GetPage(name: "/whoanswer", page: () => WhoAnswerpage()),
       ],
       // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله
       // Get.offNamed("/login"); // للذهاب مع إزالة الصفحة الحالية

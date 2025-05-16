@@ -12,10 +12,30 @@ class Packages extends StatefulWidget {
 class _PackagesPageState extends State<Packages> {
   // بيانات الباقات
   final List<Map<String, dynamic>> packages = [
-    {'name': 'باقة البرونز', 'price': '5', 'color': Colors.orangeAccent},
-    {'name': 'باقة الفضة', 'price': '10', 'color': Colors.lightBlueAccent},
-    {'name': 'باقة الذهب', 'price': '20', 'color': Colors.amber},
-    {'name': 'باقة البلاتين', 'price': '30', 'color': Colors.purpleAccent},
+    {
+      'name': 'باقة البرونز',
+      'price': '5',
+      'number': '2',
+      'color': Colors.orangeAccent,
+    },
+    {
+      'name': 'باقة الفضة',
+      'price': '10',
+      'number': '5',
+      'color': Colors.lightBlueAccent,
+    },
+    {
+      'name': 'باقة البلاتين',
+      'price': '20',
+      'number': '10',
+      'color': Colors.purpleAccent,
+    },
+    {
+      'name': 'باقة الذهب',
+      'price': '30',
+      'number': '15',
+      'color': Colors.amber,
+    },
   ];
 
   // المتغير لتعقب الفئة المحددة
@@ -86,6 +106,14 @@ class _PackagesPageState extends State<Packages> {
                                   children: [
                                     Text(
                                       packages[index]['name'],
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      "${packages[index]['number']} لعبة",
                                       style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,

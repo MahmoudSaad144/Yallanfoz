@@ -105,7 +105,7 @@ class GameappbarComponent extends StatelessWidget
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.toNamed("/games");
+                      Get.offNamed("/games");
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -124,7 +124,7 @@ class GameappbarComponent extends StatelessWidget
                   ),
                   InkWell(
                     onTap: () {
-                      Get.toNamed("/gamepage");
+                      Get.offNamed("/gamepage");
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -143,7 +143,7 @@ class GameappbarComponent extends StatelessWidget
                   ),
                   InkWell(
                     onTap: () {
-                      Get.toNamed("/mygames");
+                      Get.offNamed("/mygames");
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
