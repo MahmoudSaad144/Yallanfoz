@@ -174,7 +174,7 @@ class __Home extends State<Home> {
                           style: TextStyle(fontSize: width * 0.025),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
 
                         Icon(
                           Icons.phone,
@@ -239,7 +239,7 @@ class __Home extends State<Home> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
 
                         Icon(
                           Icons.looks_two_outlined,
@@ -304,7 +304,7 @@ class __Home extends State<Home> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
 
                         Icon(
                           Icons.swap_vert,
