@@ -27,13 +27,7 @@ use_frameworks!
 use_modular_headers!
 
 target 'Runner' do
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Analytics'
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
+  flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
 
   target 'RunnerTests' do
     inherit! :search_paths
