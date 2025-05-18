@@ -77,7 +77,7 @@ class _QuestionpageState extends State<Questionpage> {
       // بتنشئ الكونترولر بالـID المستخرج
       _controller = YoutubePlayerController(
         initialVideoId: videoId!,
-        flags: const YoutubePlayerFlags(autoPlay: true),
+        flags: const YoutubePlayerFlags(autoPlay: false),
       );
     }
 

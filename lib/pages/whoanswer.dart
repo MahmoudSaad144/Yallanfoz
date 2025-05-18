@@ -35,7 +35,6 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: GameappbarComponent(name: mygame['name']),
       body: Container(

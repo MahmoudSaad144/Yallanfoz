@@ -224,7 +224,7 @@ class __Home extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          " اتصل بصديق ",
+                          " جاوب جوابين ",
                           style: TextStyle(
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.bold,
@@ -289,7 +289,7 @@ class __Home extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          " اتصل بصديق ",
+                          " الحفرة ",
                           style: TextStyle(
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.bold,
