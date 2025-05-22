@@ -20,7 +20,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
         height: preferredSize.height,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
         ),
         child: Row(
@@ -89,9 +89,12 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                   const SizedBox(width: 8),
                   Text(
                     name,
-                    style: const TextStyle(fontSize: 12, color: Colors.black87),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFFFFECB3),
+                    ),
                   ),
-                  const Icon(Icons.arrow_drop_down, color: Colors.black54),
+                  const Icon(Icons.arrow_drop_down, color: Color(0xFFFFECB3)),
                 ],
               ),
             ),
@@ -106,7 +109,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                   icon: const Icon(Icons.add, size: 18),
                   label: const Text('شراء العاب جديدة'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepOrange,
+                    backgroundColor: Colors.orange[700],
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
@@ -127,19 +130,28 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: () {
                     Get.toNamed("/games");
                   },
-                  child: const Text('العب'),
+                  child: const Text(
+                    'العب',
+                    style: TextStyle(color: Color(0xFFFFECB3)),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/contactus");
                   },
-                  child: const Text('تواصل معنا'),
+                  child: const Text(
+                    'تواصل معنا',
+                    style: TextStyle(color: Color(0xFFFFECB3)),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
                     Get.toNamed("/mygames");
                   },
-                  child: const Text('ألعابي'),
+                  child: const Text(
+                    'ألعابي',
+                    style: TextStyle(color: Color(0xFFFFECB3)),
+                  ),
                 ),
                 const SizedBox(width: 8),
                 InkWell(
@@ -154,7 +166,7 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
                         ' يلا نفوز ',
                         style: TextStyle(
                           fontFamily: "Cario",
-                          color: Colors.orange[700],
+                          color: Color(0xFFFFECB3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

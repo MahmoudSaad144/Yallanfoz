@@ -39,14 +39,7 @@ class __Home extends State<Home> {
                     height: 330,
                     padding: EdgeInsets.symmetric(vertical: 20),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color(0xFFff9a9e),
-                          const Color(0xFFfad0c4),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
+                      color: Colors.black,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(150),
                         bottomRight: Radius.circular(150),
@@ -64,7 +57,7 @@ class __Home extends State<Home> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Colors.orange[700],
+                                color: Color(0xFFFFECB3),
                               ),
                             ),
                             SizedBox(width: 10),
@@ -82,7 +75,7 @@ class __Home extends State<Home> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: width * 0.05,
                                 fontFamily: "Cairo",
-                                color: Colors.orange[700],
+                                color: Color(0xFFFFECB3),
                               ),
                             ),
                           ],
@@ -145,7 +138,7 @@ class __Home extends State<Home> {
                     height: height * 0.95,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Colors.grey[300],
+                      color: Colors.black,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -165,13 +158,17 @@ class __Home extends State<Home> {
                           style: TextStyle(
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.bold,
+                            color: Color(0xFFFFECB3),
                           ),
                         ),
                         SizedBox(height: 20),
 
                         Text(
                           " صديقك اللي يعرف كل شي هذا وقته دق عليه ! ",
-                          style: TextStyle(fontSize: width * 0.025),
+                          style: TextStyle(
+                            fontSize: width * 0.025,
+                            color: Colors.white,
+                          ),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 10),
@@ -187,7 +184,7 @@ class __Home extends State<Home> {
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.deepOrange,
+                            color: Colors.orange[700],
                           ),
                           child: Text(
                             "تستخدمها بعد ماتشوف السؤال",
@@ -208,7 +205,7 @@ class __Home extends State<Home> {
                     height: height * 0.95,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Colors.grey[300],
+                      color: Colors.black,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -228,6 +225,7 @@ class __Home extends State<Home> {
                           style: TextStyle(
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.bold,
+                            color: Color(0xFFFFECB3),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -235,7 +233,10 @@ class __Home extends State<Home> {
                         Expanded(
                           child: Text(
                             " !متردد بجوابين؟ هذي لك جاوب بالأثنين عشان تضمن النقاط ",
-                            style: TextStyle(fontSize: width * 0.025),
+                            style: TextStyle(
+                              fontSize: width * 0.025,
+                              color: Colors.white,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -252,7 +253,7 @@ class __Home extends State<Home> {
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.deepOrange,
+                            color: Colors.orange[700],
                           ),
                           child: Text(
                             "تستخدمها بعد ماتشوف السؤال",
@@ -273,7 +274,7 @@ class __Home extends State<Home> {
                     height: height * 0.95,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Colors.grey[300],
+                      color: Colors.black,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -293,6 +294,7 @@ class __Home extends State<Home> {
                           style: TextStyle(
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.bold,
+                            color: Color(0xFFFFECB3),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -300,7 +302,10 @@ class __Home extends State<Home> {
                         Expanded(
                           child: Text(
                             " جاوب صح، و اخصم عدد النقاط اللي فزت فيها من نقاط الفريق الثاني ",
-                            style: TextStyle(fontSize: width * 0.025),
+                            style: TextStyle(
+                              fontSize: width * 0.025,
+                              color: Colors.white,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -317,7 +322,7 @@ class __Home extends State<Home> {
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.deepOrange,
+                            color: Colors.orange[700],
                           ),
                           child: Text(
                             "تستخدمها قبل ماتشوف السؤال",

@@ -191,16 +191,7 @@ class _GamesPageState extends State<Games> {
           Positioned.fill(
             child: SingleChildScrollView(
               child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xFFfff5e1), // بيج فاتح جداً
-                      Color(0xFFfdeef4), // بينك شفاف
-                    ],
-                  ),
-                ),
+                decoration: BoxDecoration(color: Colors.white),
 
                 width: double.infinity,
                 child: Column(
@@ -214,11 +205,7 @@ class _GamesPageState extends State<Games> {
                           bottomLeft: Radius.circular(150),
                           bottomRight: Radius.circular(150),
                         ),
-                        gradient: LinearGradient(
-                          colors: [Color(0xFFff9a9e), Color(0xFFfad0c4)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
+                        color: Colors.black,
                       ),
                       child: Column(
                         children: [
@@ -226,7 +213,7 @@ class _GamesPageState extends State<Games> {
                             "اختار الفئات",
                             style: TextStyle(
                               fontSize: width * 0.03,
-                              color: Colors.deepOrange,
+                              color: Color(0xFFFFECB3),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -236,6 +223,7 @@ class _GamesPageState extends State<Games> {
                             style: TextStyle(
                               fontSize: width * 0.025,
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(height: 10),
@@ -247,6 +235,7 @@ class _GamesPageState extends State<Games> {
                               style: TextStyle(
                                 fontSize: width * 0.02,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -487,12 +476,7 @@ class _GamesPageState extends State<Games> {
                                     side:
                                         isSelected
                                             ? BorderSide(
-                                              color: Color.fromARGB(
-                                                255,
-                                                208,
-                                                114,
-                                                151,
-                                              ),
+                                              color: Color(0xFFFFECB3),
                                               width: 4,
                                             )
                                             : BorderSide.none,
