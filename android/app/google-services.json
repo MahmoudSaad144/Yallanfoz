@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121242386276",
+    "project_id": "yallanfoz-da755",
+    "storage_bucket": "yallanfoz-da755.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121242386276:android:c7f7ee6ea8266eb4218471",
+        "android_client_info": {
+          "package_name": "com.solinz.yallanfoz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCClS0pLf8sTPk-g3W4VumhNvh1hngFPc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
