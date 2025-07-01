@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallanfoz/controller/gamepage_controller.dart';
 
-class GameappbarComponent extends StatelessWidget implements PreferredSizeWidget {
+class GameappbarComponent extends GetView<GamePageController>
+    implements PreferredSizeWidget {
   final String name;
 
   const GameappbarComponent({super.key, required this.name});
@@ -34,9 +36,12 @@ class GameappbarComponent extends StatelessWidget implements PreferredSizeWidget
             flex: 3,
             child: Row(
               children: [
-                Image.asset('images/logo.png', height: 80,
-                          width: 80,
-                          fit: BoxFit.fill,),
+                Image.asset(
+                  'images/logo.png',
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.fill,
+                ),
                 const SizedBox(width: 8),
                 GestureDetector(
                   onTap: () {

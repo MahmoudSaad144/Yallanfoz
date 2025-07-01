@@ -115,7 +115,10 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Get.toNamed("/games");
+                  Get.offNamedUntil(
+                    '/games',
+                    (route) => route.settings.name == '/home',
+                  ); // ده بيخليني امسح كل الصفحات اللي فوق الهوم بس ويسيبها ويدخل علي الصفحه المطلوبه علشان نشغل زر الرجوع
                 },
                 child: const Text(
                   'العب',

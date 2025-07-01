@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallanfoz/controller/mygames_controller.dart';
 
 // Show GameStartDialog Info
 
@@ -87,7 +88,7 @@ void ShowDialogGameInfo(BuildContext context, String text) {
   );
 }
 
-ShowDialogMyGame(BuildContext context, int? selected) {
+ShowDialogMyGame(BuildContext context, selected, MyGamesController controller) {
   double Width = MediaQuery.of(context).size.width;
   double Height = MediaQuery.of(context).size.height;
   return AnimatedPadding(
@@ -165,7 +166,11 @@ ShowDialogMyGame(BuildContext context, int? selected) {
             onPressed: () {
               print(selected);
               //هنطلب api الاول الخاص بحلب اللعبه
-              Get.offAllNamed("/gamepage", arguments: selected);
+              controller.gamepagecontroller.mygame.value = selected;
+              Get.offNamedUntil(
+                '/gamepage',
+                (route) => route.settings.name == '/home',
+              );
             },
             child: Text("الاستمرار", style: TextStyle(color: Colors.black)),
           ),
@@ -187,7 +192,7 @@ ShowDialogMyGame(BuildContext context, int? selected) {
                   data: MediaQuery.of(
                     context,
                   ).copyWith(viewInsets: EdgeInsets.zero),
-                  child: GameStartDialog(selected: selected),
+                  child: GameStartDialog(create: false, controller: controller),
                 ),
               );
             },
@@ -204,28 +209,15 @@ ShowDialogMyGame(BuildContext context, int? selected) {
 
 // Show GameStartDialog
 
-class GameStartDialog extends StatefulWidget {
-  final dynamic selected;
+class GameStartDialog extends StatelessWidget {
   final bool? create;
+  final dynamic controller;
 
-  const GameStartDialog({super.key, required this.selected, this.create});
-  @override
-  State<GameStartDialog> createState() => _GameStartDialogState();
-}
-
-class _GameStartDialogState extends State<GameStartDialog> {
-  GlobalKey<FormState> startGame = GlobalKey();
-  TextEditingController teamname = TextEditingController();
-  TextEditingController firstTeam = TextEditingController();
-  TextEditingController secondTeam = TextEditingController();
-  bool isLoading = false;
-  @override
-  void dispose() {
-    teamname.dispose();
-    firstTeam.dispose();
-    secondTeam.dispose();
-    super.dispose();
-  }
+  const GameStartDialog({
+    super.key,
+    required this.create,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -254,7 +246,7 @@ class _GameStartDialogState extends State<GameStartDialog> {
               minHeight: Height * 0.5,
             ),
             child: Form(
-              key: startGame,
+              key: controller.startGame,
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
 
@@ -286,11 +278,11 @@ class _GameStartDialogState extends State<GameStartDialog> {
                     ),
                     SizedBox(height: 20),
 
-                    if (widget.create != null) ...[
+                    if (create == true) ...[
                       Container(
                         width: Width * 0.3,
                         child: TextFormField(
-                          controller: teamname,
+                          controller: controller.teamname,
                           validator: (teamname) {
                             if (teamname!.isEmpty) {
                               return " هذا الحقل مطلوب ";
@@ -339,7 +331,7 @@ class _GameStartDialogState extends State<GameStartDialog> {
                         Container(
                           width: Width * 0.3,
                           child: TextFormField(
-                            controller: firstTeam,
+                            controller: controller.firstTeam,
                             validator: (firstTeam) {
                               if (firstTeam!.isEmpty) {
                                 return " هذا الحقل مطلوب ";
@@ -393,7 +385,7 @@ class _GameStartDialogState extends State<GameStartDialog> {
                         Container(
                           width: Width * 0.3,
                           child: TextFormField(
-                            controller: secondTeam,
+                            controller: controller.secondTeam,
                             validator: (secondTeam) {
                               if (secondTeam!.isEmpty) {
                                 return " هذا الحقل مطلوب ";
@@ -455,44 +447,30 @@ class _GameStartDialogState extends State<GameStartDialog> {
             Container(
               width: Width * 0.3,
               height: Height * 0.12,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrange,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+              child: Obx(
+                () => ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepOrange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                ),
 
-                onPressed: () async {
-                  if (startGame.currentState!.validate()) {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    print(
-                      "${widget.selected}  ${firstTeam.text}  ${secondTeam.text} ${teamname.text} $isLoading",
-                    );
-                    await Future.delayed(
-                      Duration(seconds: 3),
-                    ); // بدل دي هيكون دالة تسجيل البيانات في ال api
-                    setState(() {
-                      isLoading = false;
-                    });
-                    print(isLoading);
-                    //هنا بعد ما ال api ينشي العبه  لازم ارجع id اللعبه وابعته بدل ال selected
-                    Get.offAllNamed("/gamepage", arguments: widget.selected);
-                  }
-                },
-                child:
-                    isLoading
-                        ? CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
+                  onPressed: () async {
+                    await controller.StartGame();
+                  },
+                  child:
+                      controller.loading.value
+                          ? CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white,
+                            ),
+                          )
+                          : Text(
+                            "ابدأ اللعبة",
+                            style: TextStyle(color: Colors.white),
                           ),
-                        )
-                        : Text(
-                          "ابدأ اللعبة",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                ),
               ),
             ),
             Container(

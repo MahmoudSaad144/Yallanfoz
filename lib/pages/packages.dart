@@ -1,50 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallanfoz/components/appbar.dart';
+import 'package:yallanfoz/controller/packages_controller.dart';
 
-class Packages extends StatefulWidget {
-  const Packages({Key? key}) : super(key: key);
-
-  @override
-  _PackagesPageState createState() => _PackagesPageState();
-}
-
-class _PackagesPageState extends State<Packages> {
-  // بيانات الباقات
-  final List<Map<String, dynamic>> packages = [
-    {
-      'name': 'باقة البرونز',
-      'price': '5',
-      'number': '2',
-      'color': Colors.orangeAccent,
-    },
-    {
-      'name': 'باقة الفضة',
-      'price': '10',
-      'number': '5',
-      'color': Colors.lightBlueAccent,
-    },
-    {
-      'name': 'باقة البلاتين',
-      'price': '20',
-      'number': '10',
-      'color': Colors.purpleAccent,
-    },
-    {
-      'name': 'باقة الذهب',
-      'price': '30',
-      'number': '15',
-      'color': Colors.amber,
-    },
-  ];
-
-  // المتغير لتعقب الفئة المحددة
-  int? _selectedIndex;
+class Packages extends GetView<PackagesController> {
+  const Packages({super.key});
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppbarComponent(),
       body: Container(
@@ -65,84 +29,112 @@ class _PackagesPageState extends State<Packages> {
                   flex: 72,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.6,
-                    child: ListView.builder(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      itemCount: packages.length,
-                      itemBuilder: (context, index) {
-                        final isSelected =
-                            index == _selectedIndex ? true : false;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _selectedIndex = index;
-                            });
-                          },
-                          child: Center(
-                            child: Card(
-                              elevation: isSelected ? 10 : 4,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                side:
-                                    isSelected
-                                        ? const BorderSide(
-                                          color: Colors.white,
-                                          width: 3,
-                                        )
-                                        : BorderSide.none,
-                              ),
-                              margin: const EdgeInsets.symmetric(vertical: 12),
-                              child: Container(
-                                width: width * 0.9,
-                                padding: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                  color: packages[index]['color'],
-                                  borderRadius: BorderRadius.circular(20),
+                    alignment: Alignment.center,
+                    child: Obx(
+                      () =>
+                          controller.loading.value
+                              ? CircularProgressIndicator(color: Colors.white)
+                              : ListView.builder(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 20,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      packages[index]['name'],
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${packages[index]['number']} لعبة",
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12,
-                                        vertical: 8,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.3),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Text(
-                                        '\$${packages[index]['price']}',
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                itemCount: controller.packages.length,
+                                itemBuilder: (context, index) {
+                                  return Obx(() {
+                                    final isSelected =
+                                        index ==
+                                        controller.isSelectedIndex.value;
+
+                                    return GestureDetector(
+                                      onTap: () {
+                                        controller.isSelectedIndex.value =
+                                            index;
+                                      },
+                                      child: Center(
+                                        child: Card(
+                                          elevation: isSelected ? 10 : 4,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            side:
+                                                isSelected
+                                                    ? const BorderSide(
+                                                      color: Colors.white,
+                                                      width: 3,
+                                                    )
+                                                    : BorderSide.none,
+                                          ),
+                                          margin: const EdgeInsets.symmetric(
+                                            vertical: 12,
+                                          ),
+                                          child: Container(
+                                            width: width * 0.9,
+                                            padding: const EdgeInsets.all(16),
+                                            decoration: BoxDecoration(
+                                              color: controller.hexToColor(
+                                                controller
+                                                    .packages[index]['color']
+                                                    .toString(),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  controller
+                                                      .packages[index]['name'],
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "${controller.packages[index]['count']} لعبة",
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 12,
+                                                        vertical: 8,
+                                                      ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white
+                                                        .withOpacity(0.3),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          12,
+                                                        ),
+                                                  ),
+                                                  child: Text(
+                                                    '\KWD ${controller.packages[index]['price']}',
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    );
+                                  });
+                                },
                               ),
-                            ),
-                          ),
-                        );
-                      },
                     ),
                   ),
                 ),
@@ -181,8 +173,8 @@ class _PackagesPageState extends State<Packages> {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                               ).createShader(bounds),
-                          child: const Text(
-                            "0",
+                          child: Text(
+                            "${controller.userController.userData['game_count']}",
                             style: TextStyle(
                               fontSize: 70,
                               fontWeight: FontWeight.bold,
@@ -204,48 +196,50 @@ class _PackagesPageState extends State<Packages> {
               ),
               child: Container(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_selectedIndex != null) {
-                      // طباعه بيانات الباقة المختارة
-                      print(
-                        'Selected Package:  ${packages[_selectedIndex!]["id"]}',
-                      );
-                      // هنا ممكن تضيف منطق الدفع الأونلاين
-                    } else {
-                      Get.snackbar(
-                        "خطاء",
-                        " اختار باقة اولا  ",
-                        backgroundColor: Colors.red,
-                        colorText: Colors.white,
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed: () {
+                      if (controller.isSelectedIndex.value != null) {
+                        // طباعه بيانات الباقة المختارة
+                        print(
+                          'Selected Package:  ${controller.packages[controller.isSelectedIndex.value!]["id"]}',
+                        );
+                        // هنا ممكن تضيف منطق الدفع الأونلاين
+                      } else {
+                        Get.snackbar(
+                          "خطاء",
+                          " اختار باقة اولا  ",
+                          backgroundColor: Colors.red,
+                          colorText: Colors.white,
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 8,
                     ),
-                    elevation: 8,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Text(
-                        ' ادفع الأن ',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          ' ادفع الأن ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "${_selectedIndex != null ? packages[_selectedIndex!]["price"] : 0.00} \$",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          "${controller.isSelectedIndex.value != null ? controller.packages[controller.isSelectedIndex.value!]["price"] : 0.00} \$",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

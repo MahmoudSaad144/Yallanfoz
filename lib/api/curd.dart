@@ -132,6 +132,9 @@ class ApiService {
           backgroundColor: Colors.red,
           colorText: Colors.white,
         );
+        if (successCode == 407) {
+          return responseData;
+        }
         return null;
       }
 

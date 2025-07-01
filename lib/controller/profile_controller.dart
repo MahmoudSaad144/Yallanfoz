@@ -26,7 +26,7 @@ class ProfileController extends GetxController {
   void onInit() {
     name.text = userController.userData['name'];
     email.text = userController.userData['email'];
-    phone.text = userController.userData['phone'];
+    phone.text = userController.userData['phone'] ?? "";
     phone_code.value = userController.userData['phone_code'] ?? "";
     country.value = userController.userData['country'] ?? "";
     photo.value = "$serverlink/${userController.userData['photo']}";

@@ -125,6 +125,7 @@ class Home extends StatelessWidget {
                         SizedBox(height: 20),
 
                         Expanded(
+                          flex: 2,
                           child: Text(
                             " صديقك اللي يعرف كل شي هذا وقته دق عليه ! ",
                             style: TextStyle(
@@ -137,6 +138,7 @@ class Home extends StatelessWidget {
                         SizedBox(height: 10),
 
                         Expanded(
+                          flex: 2,
                           child: Icon(
                             Icons.phone,
                             size: width * 0.1,
@@ -144,20 +146,26 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Container(
-                          width: width * 0.5,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.orange[700],
-                          ),
-                          child: Text(
-                            "تستخدمها بعد ماتشوف السؤال",
-                            style: TextStyle(
-                              fontSize: width * 0.023,
-                              color: Colors.white,
+                        Expanded(
+                          child: Container(
+                            width: width * 0.5,
+                            alignment: Alignment.center,
+
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              color: Colors.orange[700],
                             ),
-                            textAlign: TextAlign.center,
+                            child: Text(
+                              "تستخدمها بعد ماتشوف السؤال",
+                              style: TextStyle(
+                                fontSize: width * 0.023,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -198,6 +206,8 @@ class Home extends StatelessWidget {
                         SizedBox(height: 20),
 
                         Expanded(
+                          flex: 2,
+
                           child: Text(
                             " !متردد بجوابين؟ هذي لك جاوب بالأثنين عشان تضمن النقاط ",
                             style: TextStyle(
@@ -210,6 +220,8 @@ class Home extends StatelessWidget {
                         SizedBox(height: 10),
 
                         Expanded(
+                          flex: 2,
+
                           child: Icon(
                             Icons.looks_two_outlined,
                             size: width * 0.1,
@@ -217,20 +229,26 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Container(
-                          width: width * 0.5,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.orange[700],
-                          ),
-                          child: Text(
-                            "تستخدمها بعد ماتشوف السؤال",
-                            style: TextStyle(
-                              fontSize: width * 0.023,
-                              color: Colors.white,
+                        Expanded(
+                          child: Container(
+                            width: width * 0.5,
+                            alignment: Alignment.center,
+
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              color: Colors.orange[700],
                             ),
-                            textAlign: TextAlign.center,
+                            child: Text(
+                              "تستخدمها بعد ماتشوف السؤال",
+                              style: TextStyle(
+                                fontSize: width * 0.023,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
@@ -241,6 +259,7 @@ class Home extends StatelessWidget {
                   Container(
                     width: width * 0.3,
                     height: height * 0.95,
+
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       color: Colors.black,
@@ -271,6 +290,8 @@ class Home extends StatelessWidget {
                         SizedBox(height: 20),
 
                         Expanded(
+                          flex: 2,
+
                           child: Text(
                             " جاوب صح، و اخصم عدد النقاط اللي فزت فيها من نقاط الفريق الثاني ",
                             style: TextStyle(
@@ -283,6 +304,8 @@ class Home extends StatelessWidget {
                         SizedBox(height: 10),
 
                         Expanded(
+                          flex: 2,
+
                           child: Icon(
                             Icons.swap_vert,
                             size: width * 0.1,
@@ -290,20 +313,25 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Container(
-                          width: width * 0.5,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.orange[700],
-                          ),
-                          child: Text(
-                            "تستخدمها قبل ماتشوف السؤال",
-                            style: TextStyle(
-                              fontSize: width * 0.023,
-                              color: Colors.white,
+                        Expanded(
+                          child: Container(
+                            width: width * 0.5,
+                            padding: EdgeInsets.all(10),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              color: Colors.orange[700],
                             ),
-                            textAlign: TextAlign.center,
+                            child: Text(
+                              "تستخدمها قبل ماتشوف السؤال",
+                              style: TextStyle(
+                                fontSize: width * 0.023,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
