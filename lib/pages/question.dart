@@ -342,7 +342,7 @@ class _QuestionpageState extends State<Questionpage> {
               ),
             ),
             SizedBox(height: 10),
-            GameFooter(mygame: mygame, page: 2),
+            GameFooter(page: 2),
           ],
         ),
       ),

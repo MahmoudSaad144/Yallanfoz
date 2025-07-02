@@ -45,7 +45,8 @@ class GameappbarComponent extends GetView<GamePageController>
                 const SizedBox(width: 8),
                 GestureDetector(
                   onTap: () {
-                    print("asd");
+                    controller.last_answer.value =
+                        controller.last_answer.value == 1 ? 2 : 1;
                   },
                   child: Container(
                     width: width * 0.18,
@@ -58,12 +59,14 @@ class GameappbarComponent extends GetView<GamePageController>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
-                          "دور فريق : red",
-                          style: TextStyle(
-                            fontSize: width * 0.015,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                        Obx(
+                          () => Text(
+                            "دور فريق : ${controller.last_answer.value == 1 ? controller.mygame['first_team'] : controller.mygame['second_team']}",
+                            style: TextStyle(
+                              fontSize: width * 0.015,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const Icon(
@@ -100,7 +103,13 @@ class GameappbarComponent extends GetView<GamePageController>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
-                  onTap: () => Get.offNamed("/games"),
+                  onTap: () async {
+                    await controller.UpdateMyGame(finished: true);
+                    Get.offNamedUntil(
+                      '/mygames',
+                      (route) => route.settings.name == '/home',
+                    );
+                  },
                   child: Row(
                     children: [
                       Text(
@@ -116,7 +125,12 @@ class GameappbarComponent extends GetView<GamePageController>
                   ),
                 ),
                 InkWell(
-                  onTap: () => Get.offNamed("/gamepage"),
+                  onTap: () {
+                    Get.offNamedUntil(
+                      '/gamepage',
+                      (route) => route.settings.name == '/home',
+                    );
+                  },
                   child: Row(
                     children: [
                       Text(
@@ -132,7 +146,13 @@ class GameappbarComponent extends GetView<GamePageController>
                   ),
                 ),
                 InkWell(
-                  onTap: () => Get.offNamed("/mygames"),
+                  onTap: () async {
+                    await controller.UpdateMyGame();
+                    Get.offNamedUntil(
+                      '/mygames',
+                      (route) => route.settings.name == '/home',
+                    );
+                  },
                   child: Row(
                     children: [
                       Text(

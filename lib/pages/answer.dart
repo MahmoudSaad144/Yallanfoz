@@ -203,7 +203,7 @@ class _AnswerpageState extends State<Answerpage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "${question['answer_answer']} ",
+                                        "${question['answer']} ",
                                         style: TextStyle(
                                           fontSize: width * 0.028,
                                           color: Colors.green,
@@ -274,7 +274,7 @@ class _AnswerpageState extends State<Answerpage> {
               ),
             ),
             SizedBox(height: 10),
-            GameFooter(mygame: mygame, page: 3),
+            GameFooter(page: 3),
           ],
         ),
       ),

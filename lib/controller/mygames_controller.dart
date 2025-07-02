@@ -58,9 +58,23 @@ class MyGamesController extends GetxController {
         mygames.addAll(data);
       }
       lastPage.value = response['data']['last_page'];
-      print('$load ========= $mygames');
       loading.value = false;
     }
+  }
+
+  Future<void> ContinueGame(selected) async {
+    loading.value = true;
+    final token = GetStorage().read('token');
+    final response = await ApiService.getRequest(
+      "$serverlink/api/mygames/$selected",
+      token,
+    );
+    if (response != null) {
+      gamepagecontroller.resetGame();
+      gamepagecontroller.LoadGameData(response['data']);
+      Get.offNamedUntil('/gamepage', (route) => route.settings.name == '/home');
+    }
+    loading.value = false;
   }
 
   Future<void> StartGame() async {
@@ -80,7 +94,8 @@ class MyGamesController extends GetxController {
       );
 
       if (response != null) {
-        gamepagecontroller.mygame.value = response['data'];
+        gamepagecontroller.resetGame();
+        gamepagecontroller.LoadGameData(response['data']);
         Get.offNamedUntil(
           '/gamepage',
           (route) => route.settings.name == '/home',

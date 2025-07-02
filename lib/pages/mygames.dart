@@ -219,7 +219,7 @@ class Mygames extends GetView<MyGamesController> {
                                     Get.dialog(
                                       ShowDialogMyGame(
                                         context,
-                                        controller.mygames[i],
+                                        controller.mygames[i]['id'],
                                         controller,
                                       ),
                                     );
@@ -256,7 +256,7 @@ class Mygames extends GetView<MyGamesController> {
                                                       child: ClipRRect(
                                                         child: Image.network(
                                                           '$serverlink/${game[index]['photo']}',
-                                                          fit: BoxFit.cover,
+                                                          fit: BoxFit.fill,
                                                           width: width * 0.1,
                                                         ),
                                                       ),
@@ -357,7 +357,7 @@ class Mygames extends GetView<MyGamesController> {
                                               ),
                                             ),
                                             child: Text(
-                                              " عدد مرات اللعب : 5 ",
+                                              " عدد مرات اللعب : ${controller.mygames[i]['count']} ",
                                               style: TextStyle(
                                                 fontSize: width * 0.016,
                                               ),

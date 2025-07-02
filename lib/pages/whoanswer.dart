@@ -257,7 +257,7 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
               ),
             ),
             SizedBox(height: 10),
-            GameFooter(mygame: mygame, page: 3),
+            GameFooter(page: 3),
           ],
         ),
       ),

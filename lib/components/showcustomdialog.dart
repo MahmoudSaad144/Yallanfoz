@@ -163,14 +163,9 @@ ShowDialogMyGame(BuildContext context, selected, MyGamesController controller) {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onPressed: () {
-              print(selected);
+            onPressed: () async {
               //هنطلب api الاول الخاص بحلب اللعبه
-              controller.gamepagecontroller.mygame.value = selected;
-              Get.offNamedUntil(
-                '/gamepage',
-                (route) => route.settings.name == '/home',
-              );
+              await controller.ContinueGame(selected);
             },
             child: Text("الاستمرار", style: TextStyle(color: Colors.black)),
           ),
@@ -496,9 +491,7 @@ class GameStartDialog extends StatelessWidget {
 
 // Phone Helper
 class HelperPhoneDialog extends StatefulWidget {
-  final String helperteam;
-
-  const HelperPhoneDialog({super.key, required this.helperteam});
+  const HelperPhoneDialog({super.key});
   @override
   State<HelperPhoneDialog> createState() => _HelperPhoneDialogState();
 }
@@ -509,7 +502,6 @@ class _HelperPhoneDialogState extends State<HelperPhoneDialog> {
   Timer? _countdownTimer;
 
   void _startCountdown() {
-    print(widget.helperteam);
     setState(() {
       timestart = true;
       _secondsLeft = 60;

@@ -48,14 +48,20 @@ class Setting extends GetView<SettingController> {
                               ),
 
                               // دي خواصه لو انا عايز اديله cutom colors
-                              activeColor: Colors.green,
-                              activeTrackColor: Colors.greenAccent,
+                              activeColor: Color.fromARGB(255, 168, 113, 5),
+                              activeTrackColor: Color.fromARGB(
+                                255,
+                                255,
+                                191,
+                                63,
+                              ),
                               value:
                                   controller
                                       .noti_status
                                       .value, // ده متغير انا عرفته فوق
-                              onChanged: (status) {
+                              onChanged: (status) async {
                                 controller.noti_status.value = status;
+                                await controller.updateUserSettingForm();
                               },
                             ),
                           ),

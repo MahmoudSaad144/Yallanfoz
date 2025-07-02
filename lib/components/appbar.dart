@@ -25,7 +25,10 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               if (value == 'profile') {
                 Get.toNamed("/profile");
               } else if (value == 'mygames') {
-                Get.toNamed("/mygames");
+                Get.offNamedUntil(
+                  '/mygames',
+                  (route) => route.settings.name == '/home',
+                );
               } else if (value == 'settings') {
                 Get.toNamed("/settingpage");
               } else if (value == 'logout') {
@@ -136,7 +139,10 @@ class AppbarComponent extends StatelessWidget implements PreferredSizeWidget {
               ),
               TextButton(
                 onPressed: () {
-                  Get.toNamed("/mygames");
+                  Get.offNamedUntil(
+                    '/mygames',
+                    (route) => route.settings.name == '/home',
+                  );
                 },
                 child: const Text(
                   'ألعابي',

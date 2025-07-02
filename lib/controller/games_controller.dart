@@ -63,8 +63,8 @@ class GamesController extends GetxController {
       }
       lastPage.value = response['data']['last_page'];
       print('$load ========= $games');
-      loading.value = false;
     }
+    loading.value = false;
   }
 
   Future<void> GetGamesCountry() async {
@@ -76,8 +76,8 @@ class GamesController extends GetxController {
     );
     if (response != null) {
       countrys.value = List<Map<String, dynamic>>.from(response['data']);
-      loading.value = false;
     }
+    loading.value = false;
   }
 
   void scrollListener() async {
@@ -114,7 +114,8 @@ class GamesController extends GetxController {
       );
 
       if (response != null) {
-        gamepagecontroller.mygame.value = response['data'];
+        gamepagecontroller.resetGame();
+        gamepagecontroller.LoadGameData(response['data']);
         userController.userData.value = response['user'];
         Get.offNamedUntil(
           '/gamepage',

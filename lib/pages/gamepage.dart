@@ -61,19 +61,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['200']?[0],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['200']?[0]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['200']?[0],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['200']?[0]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
                                               bottomRight: Radius.circular(20),
@@ -95,19 +110,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['400']?[0],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['400']?[0]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['400']?[0],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['400']?[0]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
                                               bottomRight: Radius.circular(20),
@@ -129,19 +159,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['600']?[0],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['600']?[0]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['600']?[0],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['600']?[0]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(20),
                                               bottomRight: Radius.circular(20),
@@ -209,19 +254,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['200']?[1],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['200']?[1]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['200']?[1],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['200']?[1]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20),
                                               bottomLeft: Radius.circular(20),
@@ -242,19 +302,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['400']?[1],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['400']?[1]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['400']?[1],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['400']?[1]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20),
                                               bottomLeft: Radius.circular(20),
@@ -275,19 +350,34 @@ class Gamepage extends GetView<GamePageController> {
                                     Expanded(
                                       flex: 3,
                                       child: InkWell(
-                                        onTap: () {
-                                          Get.offNamed(
-                                            "/question",
-                                            arguments: {
-                                              'mygame': controller.mygame,
-                                              'current_game': games[index],
-                                              'question': questions['600']?[1],
-                                            },
-                                          );
-                                        },
+                                        onTap:
+                                            controller.answeredQuestions
+                                                    .contains(
+                                                      questions['600']?[1]['id'],
+                                                    )
+                                                ? null
+                                                : () {
+                                                  Get.offNamed(
+                                                    "/question",
+                                                    arguments: {
+                                                      'mygame':
+                                                          controller.mygame,
+                                                      'current_game':
+                                                          games[index],
+                                                      'question':
+                                                          questions['600']?[1],
+                                                    },
+                                                  );
+                                                },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFea8685),
+                                            color:
+                                                controller.answeredQuestions
+                                                        .contains(
+                                                          questions['600']?[1]['id'],
+                                                        )
+                                                    ? Colors.grey
+                                                    : Color(0xFFea8685),
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20),
                                               bottomLeft: Radius.circular(20),
@@ -318,7 +408,7 @@ class Gamepage extends GetView<GamePageController> {
               ),
             ),
             SizedBox(height: 10),
-            GameFooter(mygame: controller.mygame, page: 1),
+            GameFooter(page: 1),
           ],
         ),
       ),
