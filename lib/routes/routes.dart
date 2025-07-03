@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:yallanfoz/binding/binding.dart';
 import 'package:yallanfoz/home.dart';
+import 'package:yallanfoz/pages/aboutus.dart';
 import 'package:yallanfoz/pages/answer.dart';
 import 'package:yallanfoz/pages/auth/forgetpassword.dart';
 import 'package:yallanfoz/pages/auth/login.dart';
@@ -43,6 +44,7 @@ List<GetPage> Routes() {
     GetPage(name: "/question", page: () => Questionpage()),
     GetPage(name: "/answer", page: () => Answerpage()),
     GetPage(name: "/whoanswer", page: () => WhoAnswerpage()),
+    GetPage(name: "/contactus", page: () => AboutUs()),
   ];
   // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله
   // Get.offNamed("/login"); // للذهاب مع إزالة الصفحة الحالية

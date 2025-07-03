@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallanfoz/components/game_appbar.dart';
 import 'package:yallanfoz/components/game_footer.dart';
+import 'package:yallanfoz/controller/gamepage_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Answerpage extends StatefulWidget {
@@ -16,12 +17,19 @@ class _AnswerpageState extends State<Answerpage> {
   late Map<String, dynamic> current_game;
   late Map<String, dynamic> question;
   late YoutubePlayerController _controller; // علشان لو عندي فيديو يوتيوب
+  final gamepagecontroller = Get.find<GamePageController>();
 
   @override
   void initState() {
     mygame = Get.arguments['mygame'];
     current_game = Get.arguments['current_game'];
     question = Get.arguments['question'];
+    if (gamepagecontroller.current_game.isEmpty) {
+      gamepagecontroller.current_game.value = current_game;
+    }
+    if (gamepagecontroller.question.isEmpty) {
+      gamepagecontroller.question.value = question;
+    }
 
     if (question['answer_video'] != null) {
       final videoId = YoutubePlayer.convertUrlToId(question['answer_video']);
@@ -31,10 +39,6 @@ class _AnswerpageState extends State<Answerpage> {
         flags: const YoutubePlayerFlags(autoPlay: false),
       );
     }
-
-    print(mygame);
-    print(current_game);
-    print(question);
     super.initState();
   }
 

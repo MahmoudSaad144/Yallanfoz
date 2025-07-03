@@ -2,41 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yallanfoz/components/game_appbar.dart';
 import 'package:yallanfoz/components/game_footer.dart';
+import 'package:yallanfoz/controller/gamepage_controller.dart';
 
-class WhoAnswerpage extends StatefulWidget {
+class WhoAnswerpage extends GetView<GamePageController> {
   const WhoAnswerpage({super.key});
-
-  @override
-  _WhoAnswerpageState createState() => _WhoAnswerpageState();
-}
-
-class _WhoAnswerpageState extends State<WhoAnswerpage> {
-  late Map<String, dynamic> mygame;
-  late Map<String, dynamic> current_game;
-  late Map<String, dynamic> question;
-
-  @override
-  void initState() {
-    mygame = Get.arguments['mygame'];
-    current_game = Get.arguments['current_game'];
-    question = Get.arguments['question'];
-
-    print(mygame);
-    print(current_game);
-    print(question);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: GameappbarComponent(name: mygame['name']),
+      appBar: GameappbarComponent(name: controller.mygame['name']),
       body: Container(
         width: width,
         padding: EdgeInsets.only(top: 15),
@@ -77,7 +52,7 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                     ),
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${question['points']} نقطة",
+                                      "${controller.question['points']} نقطة",
                                       style: TextStyle(
                                         fontSize: width * 0.025,
                                         color: Colors.white,
@@ -98,7 +73,7 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                     ),
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${current_game['name']}",
+                                      "${controller.current_game['name']}",
                                       style: TextStyle(
                                         fontSize: width * 0.025,
                                         color: Colors.white,
@@ -122,9 +97,10 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                       Get.offNamed(
                                         "/answer",
                                         arguments: {
-                                          'mygame': mygame,
-                                          'current_game': current_game,
-                                          'question': question,
+                                          'mygame': controller.mygame,
+                                          'current_game':
+                                              controller.current_game,
+                                          'question': controller.question,
                                         },
                                       );
                                     },
@@ -160,12 +136,8 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                   children: [
                                     Expanded(
                                       child: InkWell(
-                                        onTap: () {
-                                          print(mygame['id']);
-                                          Get.offNamed(
-                                            "/gamepage",
-                                            arguments: mygame['id'],
-                                          );
+                                        onTap: () async {
+                                          await controller.WhoAnswer(answer: 1);
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(8),
@@ -178,7 +150,7 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                           ),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "${mygame['first_team']}",
+                                            "${controller.mygame['first_team']}",
                                             style: TextStyle(
                                               fontSize: width * 0.025,
                                               color: Colors.white,
@@ -190,12 +162,8 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                     Spacer(),
                                     Expanded(
                                       child: InkWell(
-                                        onTap: () {
-                                          print(mygame['id']);
-                                          Get.offNamed(
-                                            "/gamepage",
-                                            arguments: mygame['id'],
-                                          );
+                                        onTap: () async {
+                                          await controller.WhoAnswer(answer: 2);
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(8),
@@ -208,7 +176,7 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                           ),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "${mygame['second_team']}",
+                                            "${controller.mygame['second_team']}",
                                             style: TextStyle(
                                               fontSize: width * 0.025,
                                               color: Colors.white,
@@ -220,12 +188,8 @@ class _WhoAnswerpageState extends State<WhoAnswerpage> {
                                   ],
                                 ),
                                 InkWell(
-                                  onTap: () {
-                                    print(mygame['id']);
-                                    Get.offNamed(
-                                      "/gamepage",
-                                      arguments: mygame['id'],
-                                    );
+                                  onTap: () async {
+                                    await controller.WhoAnswer(answer: 3);
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(8),

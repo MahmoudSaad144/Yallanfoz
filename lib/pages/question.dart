@@ -80,10 +80,6 @@ class _QuestionpageState extends State<Questionpage> {
         flags: const YoutubePlayerFlags(autoPlay: false),
       );
     }
-
-    print(mygame);
-    print(current_game);
-    print(question);
     super.initState();
   }
 

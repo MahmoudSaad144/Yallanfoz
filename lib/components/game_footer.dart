@@ -149,7 +149,7 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.first_team_two.value == 0 &&
+                                if (controller.mygame['first_team_two'] == 0 &&
                                     controller.last_answer == 1 &&
                                     page == 2) {
                                   return Container(
@@ -160,7 +160,10 @@ class GameFooter extends GetView<GamePageController> {
                                         width: 2,
                                       ),
                                       color:
-                                          controller.first_team_two_active.value
+                                          controller
+                                                      .first_team_two_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -169,9 +172,12 @@ class GameFooter extends GetView<GamePageController> {
                                       onTap: () {
                                         // action
                                         controller.first_team_two_active.value =
-                                            !controller
-                                                .first_team_two_active
-                                                .value;
+                                            controller
+                                                        .first_team_two_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.all(
@@ -182,8 +188,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .first_team_two_active
-                                                      .value
+                                                          .first_team_two_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),
@@ -222,7 +229,8 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.first_team_phone.value == 0 &&
+                                if (controller.mygame['first_team_phone'] ==
+                                        0 &&
                                     controller.last_answer == 1 &&
                                     page == 2) {
                                   return Container(
@@ -234,8 +242,9 @@ class GameFooter extends GetView<GamePageController> {
                                       ),
                                       color:
                                           controller
-                                                  .first_team_phone_active
-                                                  .value
+                                                      .first_team_phone_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -245,12 +254,16 @@ class GameFooter extends GetView<GamePageController> {
                                         // action
                                         controller
                                             .first_team_phone_active
-                                            .value = !controller
-                                                .first_team_phone_active
-                                                .value;
+                                            .value = controller
+                                                        .first_team_phone_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                         if (controller
-                                            .first_team_phone_active
-                                            .value) {
+                                                .first_team_phone_active
+                                                .value ==
+                                            1) {
                                           Get.dialog(
                                             barrierDismissible: false,
                                             MediaQuery(
@@ -273,8 +286,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .first_team_phone_active
-                                                      .value
+                                                          .first_team_phone_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),
@@ -313,7 +327,7 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.first_team_hole.value == 0 &&
+                                if (controller.mygame['first_team_hole'] == 0 &&
                                     controller.last_answer == 1 &&
                                     page == 1) {
                                   return Container(
@@ -325,8 +339,9 @@ class GameFooter extends GetView<GamePageController> {
                                       ),
                                       color:
                                           controller
-                                                  .first_team_hole_active
-                                                  .value
+                                                      .first_team_hole_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -336,9 +351,12 @@ class GameFooter extends GetView<GamePageController> {
                                         // action
                                         controller
                                             .first_team_hole_active
-                                            .value = !controller
-                                                .first_team_hole_active
-                                                .value;
+                                            .value = controller
+                                                        .first_team_hole_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.all(
@@ -349,8 +367,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .first_team_hole_active
-                                                      .value
+                                                          .first_team_hole_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),
@@ -510,7 +529,7 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.second_team_two.value == 0 &&
+                                if (controller.mygame['second_team_two'] == 0 &&
                                     controller.last_answer == 2 &&
                                     page == 2) {
                                   return Container(
@@ -522,8 +541,9 @@ class GameFooter extends GetView<GamePageController> {
                                       ),
                                       color:
                                           controller
-                                                  .second_team_two_active
-                                                  .value
+                                                      .second_team_two_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -533,9 +553,12 @@ class GameFooter extends GetView<GamePageController> {
                                         // action
                                         controller
                                             .second_team_two_active
-                                            .value = !controller
-                                                .second_team_two_active
-                                                .value;
+                                            .value = controller
+                                                        .second_team_two_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.all(
@@ -546,8 +569,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .second_team_two_active
-                                                      .value
+                                                          .second_team_two_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),
@@ -586,7 +610,8 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.second_team_phone.value == 0 &&
+                                if (controller.mygame['second_team_phone'] ==
+                                        0 &&
                                     controller.last_answer == 2 &&
                                     page == 2) {
                                   return Container(
@@ -598,8 +623,9 @@ class GameFooter extends GetView<GamePageController> {
                                       ),
                                       color:
                                           controller
-                                                  .second_team_phone_active
-                                                  .value
+                                                      .second_team_phone_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -609,12 +635,16 @@ class GameFooter extends GetView<GamePageController> {
                                         // action
                                         controller
                                             .second_team_phone_active
-                                            .value = !controller
-                                                .second_team_phone_active
-                                                .value;
+                                            .value = controller
+                                                        .second_team_phone_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                         if (controller
-                                            .second_team_phone_active
-                                            .value) {
+                                                .second_team_phone_active
+                                                .value ==
+                                            1) {
                                           Get.dialog(
                                             barrierDismissible: false,
                                             MediaQuery(
@@ -637,8 +667,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .second_team_phone_active
-                                                      .value
+                                                          .second_team_phone_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),
@@ -677,7 +708,8 @@ class GameFooter extends GetView<GamePageController> {
                               color: Colors.transparent,
                               shape: const CircleBorder(),
                               child: Obx(() {
-                                if (controller.second_team_hole.value == 0 &&
+                                if (controller.mygame['second_team_hole'] ==
+                                        0 &&
                                     controller.last_answer == 2 &&
                                     page == 1) {
                                   return Container(
@@ -689,8 +721,9 @@ class GameFooter extends GetView<GamePageController> {
                                       ),
                                       color:
                                           controller
-                                                  .second_team_hole_active
-                                                  .value
+                                                      .second_team_hole_active
+                                                      .value ==
+                                                  1
                                               ? Color(0xFFea8685)
                                               : null,
                                     ),
@@ -700,9 +733,12 @@ class GameFooter extends GetView<GamePageController> {
                                         // action
                                         controller
                                             .second_team_hole_active
-                                            .value = !controller
-                                                .second_team_hole_active
-                                                .value;
+                                            .value = controller
+                                                        .second_team_hole_active
+                                                        .value ==
+                                                    1
+                                                ? 0
+                                                : 1;
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.all(
@@ -713,8 +749,9 @@ class GameFooter extends GetView<GamePageController> {
                                           size: width * 0.028,
                                           color:
                                               controller
-                                                      .second_team_hole_active
-                                                      .value
+                                                          .second_team_hole_active
+                                                          .value ==
+                                                      1
                                                   ? Colors.white
                                                   : Color(0xFFea8685),
                                         ),

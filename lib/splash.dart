@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:yallanfoz/controller/appinfo_controller.dart';
 import 'package:yallanfoz/controller/user_controller.dart';
 
 class Splash extends StatefulWidget {
@@ -20,6 +21,7 @@ class _SplashState extends State<Splash> {
   double space = 0;
   double bottomPadding = 0; // للتحكم في حركة الجملة للأعلى
   final userController = Get.find<UserController>();
+  final appinfocontroller = Get.find<AppInfoController>();
   @override
   void initState() {
     super.initState();
@@ -53,6 +55,7 @@ class _SplashState extends State<Splash> {
       } else {
         Get.offAllNamed("/login");
       }
+      await appinfocontroller.getAppInfo();
     });
   }
 

@@ -6,6 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:yallanfoz/controller/appinfo_controller.dart';
 import 'package:yallanfoz/controller/gamepage_controller.dart';
 import 'package:yallanfoz/controller/user_controller.dart';
 import 'package:yallanfoz/routes/routes.dart';
@@ -126,6 +127,7 @@ Future<void> MainRequestBeforeStartApp() async {
   await GetStorage.init(); // افتح التخزين وحضّره
   Get.put(UserController());
   Get.put(GamePageController());
+  Get.put(AppInfoController());
 
   // طلب الأذونات أول مرة فقط
   await setupNotifications();
