@@ -14,6 +14,7 @@ import 'package:yallanfoz/pages/profile.dart';
 import 'package:yallanfoz/pages/question.dart';
 import 'package:yallanfoz/pages/settings.dart';
 import 'package:yallanfoz/pages/whoanswer.dart';
+import 'package:yallanfoz/pages/whowin.dart';
 import 'package:yallanfoz/splash.dart';
 
 List<GetPage> Routes() {
@@ -44,6 +45,7 @@ List<GetPage> Routes() {
     GetPage(name: "/question", page: () => Questionpage()),
     GetPage(name: "/answer", page: () => Answerpage()),
     GetPage(name: "/whoanswer", page: () => WhoAnswerpage()),
+    GetPage(name: "/whowin", page: () => WhoWinPage()),
     GetPage(name: "/contactus", page: () => AboutUs()),
   ];
   // Get.toNamed("/home"); // للذهاب إلى صفحة مع الاحتفاظ بالباقي اسفله

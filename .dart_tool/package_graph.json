@@ -7,6 +7,7 @@
       "name": "yallanfoz",
       "version": "1.0.0+1",
       "dependencies": [
+        "animated_text_kit",
         "country_picker",
         "cupertino_icons",
         "firebase_core",
@@ -69,6 +70,14 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "animated_text_kit",
+      "version": "4.2.3",
+      "dependencies": [
+        "characters",
+        "flutter"
       ]
     },
     {

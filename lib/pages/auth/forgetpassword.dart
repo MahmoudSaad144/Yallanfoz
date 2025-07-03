@@ -21,110 +21,113 @@ class Forgetpassword extends GetView<ForgetPasswordController> {
                   bottomLeft: Radius.circular(150),
                 ),
               ),
-              child: ListView(
-                children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        Image.asset("images/logo.png", width: 80, height: 80),
-                        Text(
-                          "يلا نفوز",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: MediaQuery.of(context).size.width * 0.02,
-                            fontFamily: "Cairo",
-                            color: Colors.white,
+              child: SafeArea(
+                child: ListView(
+                  children: [
+                    Center(
+                      child: Column(
+                        children: [
+                          Image.asset("images/logo.png", width: 80, height: 80),
+                          Text(
+                            "يلا نفوز",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.02,
+                              fontFamily: "Cairo",
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 10),
-                        Form(
-                          key: controller.forgetform,
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                controller: controller.email,
-                                validator: (email) {
-                                  if (email!.isEmpty) {
-                                    return " هذا الحقل مطلوب ";
-                                  }
+                          SizedBox(height: 10),
+                          Form(
+                            key: controller.forgetform,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  controller: controller.email,
+                                  validator: (email) {
+                                    if (email!.isEmpty) {
+                                      return " هذا الحقل مطلوب ";
+                                    }
 
-                                  if (!RegExp(
-                                    r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
-                                  ).hasMatch(email)) {
-                                    return " البريد الإلكتروني غير صحيح";
-                                  }
+                                    if (!RegExp(
+                                      r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
+                                    ).hasMatch(email)) {
+                                      return " البريد الإلكتروني غير صحيح";
+                                    }
 
-                                  return null;
-                                },
-                                //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
-                                autovalidateMode: AutovalidateMode.onUnfocus,
-                                style: TextStyle(color: Colors.white),
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                  labelText: "البريد الاكتروني",
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(width: 2),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: const Color(
-                                        0xFFfff5e1,
-                                      ), // لون البوردر العادي
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(
-                                        0xFFFFECB3,
-                                      ), // لون البوردر وقت الفوكس
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              Obx(
-                                () => MaterialButton(
-                                  onPressed: () {
-                                    controller.isloading.value
-                                        ? null
-                                        : controller.forgetpassword();
+                                    return null;
                                   },
-                                  color: Color(0xFFF4A300),
-                                  textColor: Colors.white,
-                                  minWidth: 200,
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
+                                  //autovalidateMode علشان اخليه يعمل validate بشكل ريل تايم
+                                  autovalidateMode: AutovalidateMode.onUnfocus,
+                                  style: TextStyle(color: Colors.white),
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
+                                    labelText: "البريد الاكتروني",
+                                    labelStyle: TextStyle(color: Colors.white),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(width: 2),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: const Color(
+                                          0xFFfff5e1,
+                                        ), // لون البوردر العادي
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(
+                                          0xFFFFECB3,
+                                        ), // لون البوردر وقت الفوكس
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
                                     ),
                                   ),
-                                  child:
-                                      controller.isloading.value
-                                          ? CircularProgressIndicator(
-                                            color: Colors.white,
-                                          )
-                                          : Text(" ارسال "),
                                 ),
-                              ),
-                            ],
+                                SizedBox(height: 10),
+                                Obx(
+                                  () => MaterialButton(
+                                    onPressed: () {
+                                      controller.isloading.value
+                                          ? null
+                                          : controller.forgetpassword();
+                                    },
+                                    color: Color(0xFFF4A300),
+                                    textColor: Colors.white,
+                                    minWidth: 200,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ),
+                                    child:
+                                        controller.isloading.value
+                                            ? CircularProgressIndicator(
+                                              color: Colors.white,
+                                            )
+                                            : Text(" ارسال "),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

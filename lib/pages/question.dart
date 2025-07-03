@@ -99,122 +99,44 @@ class _QuestionpageState extends State<Questionpage> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: GameappbarComponent(name: mygame['name']),
-      body: Container(
-        width: width,
-        padding: EdgeInsets.only(top: 15),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFff9a9e), Color(0xFFfad0c4)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+      body: SafeArea(
+        child: Container(
+          width: width,
+          padding: EdgeInsets.only(top: 15),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFff9a9e), Color(0xFFfad0c4)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.all(8),
-                                        width: width * 0.2,
-                                        decoration: BoxDecoration(
-                                          color: Colors.deepOrange,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "${question['points']} نقطة",
-                                          style: TextStyle(
-                                            fontSize: width * 0.025,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Container(
-                                        padding: EdgeInsets.all(8),
-                                        width: width * 0.2,
-                                        decoration: BoxDecoration(
-                                          color: Colors.deepOrange,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "${current_game['name']}",
-                                          style: TextStyle(
-                                            fontSize: width * 0.025,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-
-                                      MaterialButton(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        padding: EdgeInsets.all(8),
-                                        minWidth: width * 0.2,
-                                        color: Colors.green,
-                                        onPressed: () {
-                                          Get.offNamed(
-                                            "/answer",
-                                            arguments: {
-                                              'mygame': mygame,
-                                              'current_game': current_game,
-                                              'question': question,
-                                            },
-                                          );
-                                        },
-                                        child: Text(
-                                          " الإجابة ",
-                                          style: TextStyle(
-                                            fontSize: width * 0.025,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
                                           padding: EdgeInsets.all(8),
-                                          width: width,
-                                          height: 50,
+                                          width: width * 0.2,
                                           decoration: BoxDecoration(
                                             color: Colors.deepOrange,
                                             borderRadius: BorderRadius.all(
@@ -222,124 +144,206 @@ class _QuestionpageState extends State<Questionpage> {
                                             ),
                                           ),
                                           alignment: Alignment.center,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              IconButton(
-                                                onPressed: () {
-                                                  _startAndResetTimer();
-                                                },
-                                                color: Colors.white,
-                                                icon: Icon(
-                                                  Icons.restart_alt_outlined,
-                                                ),
+                                          child: Text(
+                                            "${question['points']} نقطة",
+                                            style: TextStyle(
+                                              fontSize: width * 0.025,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Container(
+                                          padding: EdgeInsets.all(8),
+                                          width: width * 0.2,
+                                          decoration: BoxDecoration(
+                                            color: Colors.deepOrange,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(20),
+                                            ),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${current_game['name']}",
+                                            style: TextStyle(
+                                              fontSize: width * 0.025,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+
+                                        MaterialButton(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(20),
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.all(8),
+                                          minWidth: width * 0.2,
+                                          color: Colors.green,
+                                          onPressed: () {
+                                            Get.offNamed(
+                                              "/answer",
+                                              arguments: {
+                                                'mygame': mygame,
+                                                'current_game': current_game,
+                                                'question': question,
+                                              },
+                                            );
+                                          },
+                                          child: Text(
+                                            " الإجابة ",
+                                            style: TextStyle(
+                                              fontSize: width * 0.025,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            padding: EdgeInsets.all(8),
+                                            width: width,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              color: Colors.deepOrange,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(20),
                                               ),
-                                              Text(
-                                                "$_timeString",
-                                                style: TextStyle(
-                                                  fontSize: width * 0.025,
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    _startAndResetTimer();
+                                                  },
                                                   color: Colors.white,
+                                                  icon: Icon(
+                                                    Icons.restart_alt_outlined,
+                                                  ),
                                                 ),
-                                              ),
-                                              IconButton(
-                                                onPressed: () {
-                                                  _isRunning
-                                                      ? _pauseTimer()
-                                                      : _resumeTimer();
-                                                },
-                                                color: Colors.white,
-                                                icon: Icon(
-                                                  _isRunning
-                                                      ? Icons
-                                                          .pause_circle_outline
-                                                      : Icons.play_arrow,
+                                                Text(
+                                                  "$_timeString",
+                                                  style: TextStyle(
+                                                    fontSize: width * 0.025,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                                IconButton(
+                                                  onPressed: () {
+                                                    _isRunning
+                                                        ? _pauseTimer()
+                                                        : _resumeTimer();
+                                                  },
+                                                  color: Colors.white,
+                                                  icon: Icon(
+                                                    _isRunning
+                                                        ? Icons
+                                                            .pause_circle_outline
+                                                        : Icons.play_arrow,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(height: 20),
-                                      Expanded(
-                                        flex: 3,
-                                        child: Text(
-                                          "${question['question']} ",
-                                          style: TextStyle(
-                                            fontSize: width * 0.02,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
+                                        SizedBox(height: 20),
+                                        Expanded(
+                                          flex: 3,
+                                          child: Text(
+                                            "${question['question']} ",
+                                            style: TextStyle(
+                                              fontSize: width * 0.02,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        if (question['question_photo'] != null)
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: width,
+                                      height: height,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
+                                        child: Image.network(
+                                          "${question['question_photo']}",
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      if (question['question_photo'] != null)
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    width: width,
-                                    height: height,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      child: Image.network(
-                                        "${question['question_photo']}",
-                                        fit: BoxFit.fill,
+                        if (question['question_video'] != null)
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: width,
+                                      height: height,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
+                                        child: YoutubePlayer(
+                                          controller: _controller,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      if (question['question_video'] != null)
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    width: width,
-                                    height: height,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      child: YoutubePlayer(
-                                        controller: _controller,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            GameFooter(page: 2),
-          ],
+              SizedBox(height: 10),
+              GameFooter(page: 2),
+            ],
+          ),
         ),
       ),
     );

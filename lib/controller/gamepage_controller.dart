@@ -21,6 +21,7 @@ class GamePageController extends GetxController {
   final second_team_hole_active = 1.obs;
   final RxMap<String, dynamic> question = <String, dynamic>{}.obs;
   final RxMap<String, dynamic> current_game = <String, dynamic>{}.obs;
+  final whowin = ''.obs;
 
   @override
   void onInit() {
@@ -100,6 +101,7 @@ class GamePageController extends GetxController {
     second_team_hole_active.value = 0;
     question.value = {};
     current_game.value = {};
+    whowin.value = '';
   }
 
   Future<void> WhoAnswer({required int answer}) async {
@@ -123,5 +125,12 @@ class GamePageController extends GetxController {
     }
     await UpdateMyGame(answer: answer);
     Get.offNamedUntil('/gamepage', (route) => route.settings.name == '/home');
+  }
+
+  void WhoWin() {
+    whowin.value =
+        mygame['first_team_score'] > mygame['second_team_score']
+            ? mygame['first_team']
+            : mygame['second_team'];
   }
 }

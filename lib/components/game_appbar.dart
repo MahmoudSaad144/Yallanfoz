@@ -104,9 +104,8 @@ class GameappbarComponent extends GetView<GamePageController>
               children: [
                 InkWell(
                   onTap: () async {
-                    await controller.UpdateMyGame(finished: true);
                     Get.offNamedUntil(
-                      '/mygames',
+                      '/whowin',
                       (route) => route.settings.name == '/home',
                     );
                   },
