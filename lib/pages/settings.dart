@@ -8,24 +8,24 @@ class Setting extends GetView<SettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.15,
-                  left: 40,
-                  right: 40,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.15,
+                left: 40,
+                right: 40,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.black,
 
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(150),
-                  ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(150),
                 ),
+              ),
+              child: SafeArea(
                 child: ListView(
                   children: [
                     Center(
@@ -273,16 +273,16 @@ class Setting extends GetView<SettingController> {
                 ),
               ),
             ),
-            Positioned(
-              top: 10,
-              left: 10,
-              child: IconButton(
-                icon: Icon(Icons.arrow_forward, color: Color(0xFFFFECB3)),
-                onPressed: () => Get.back(),
-              ),
+          ),
+          Positioned(
+            top: 10,
+            left: 10,
+            child: IconButton(
+              icon: Icon(Icons.arrow_forward, color: Color(0xFFFFECB3)),
+              onPressed: () => Get.back(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

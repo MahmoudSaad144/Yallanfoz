@@ -76,95 +76,93 @@ class _WhoWinPageState extends State<WhoWinPage>
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // خلفية متدرجة
-            Container(width: width, height: height, color: Colors.black),
+      body: Stack(
+        children: [
+          // خلفية متدرجة
+          Container(width: width, height: height, color: Colors.black),
 
-            // الخلفية المتحركة بالأيقونات
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                return CustomPaint(
-                  size: Size(width, height),
-                  painter: _FloatingIconsPainter(
-                    icons: _icons,
-                    animation: _controller,
+          // الخلفية المتحركة بالأيقونات
+          AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return CustomPaint(
+                size: Size(width, height),
+                painter: _FloatingIconsPainter(
+                  icons: _icons,
+                  animation: _controller,
+                ),
+              );
+            },
+          ),
+
+          // الكلام المتحرك
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: EdgeInsets.only(top: height * 0.1),
+                child: DefaultTextStyle(
+                  style: TextStyle(
+                    fontSize: width * 0.07,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black38,
+                        offset: Offset(3.0, 3.0),
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
-
-            // الكلام المتحرك
-            Positioned.fill(
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: EdgeInsets.only(top: height * 0.1),
-                  child: DefaultTextStyle(
-                    style: TextStyle(
-                      fontSize: width * 0.07,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 10.0,
-                          color: Colors.black38,
-                          offset: Offset(3.0, 3.0),
-                        ),
-                      ],
-                    ),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        ScaleAnimatedText('مبروك 🎉'),
-                        TypewriterAnimatedText(
-                          'لقد فاز الفريق (${controller.whowin.value})',
-                          speed: const Duration(milliseconds: 100),
-                        ),
-                      ],
-                      repeatForever: true,
-                      pause: const Duration(milliseconds: 1000),
-                    ),
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      ScaleAnimatedText('مبروك 🎉'),
+                      TypewriterAnimatedText(
+                        'لقد فاز الفريق (${controller.whowin.value})',
+                        speed: const Duration(milliseconds: 100),
+                      ),
+                    ],
+                    repeatForever: true,
+                    pause: const Duration(milliseconds: 1000),
                   ),
                 ),
               ),
             ),
+          ),
 
-            // زر الرجوع
-            Positioned(
-              bottom: 50,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () async {
-                    await controller.UpdateMyGame(finished: true);
-                    Get.offNamedUntil(
-                      '/mygames',
-                      (route) => route.settings.name == '/home',
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+          // زر الرجوع
+          Positioned(
+            bottom: 50,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  await controller.UpdateMyGame(finished: true);
+                  Get.offNamedUntil(
+                    '/mygames',
+                    (route) => route.settings.name == '/home',
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Text(
-                    'العودة للرئيسية',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: width * 0.045,
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                child: Text(
+                  'العودة للرئيسية',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: width * 0.045,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
