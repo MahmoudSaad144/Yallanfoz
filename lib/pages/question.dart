@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yallanfoz/api/linkserver.dart';
 import 'package:yallanfoz/components/game_appbar.dart';
 import 'package:yallanfoz/components/game_footer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -301,7 +302,7 @@ class _QuestionpageState extends State<Questionpage> {
                                           Radius.circular(20),
                                         ),
                                         child: Image.network(
-                                          "${question['question_photo']}",
+                                          "$serverlink/${question['question_photo']}",
                                           fit: BoxFit.fill,
                                         ),
                                       ),

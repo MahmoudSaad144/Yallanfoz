@@ -403,13 +403,7 @@ class Games extends GetView<GamesController> {
                                                       Expanded(
                                                         child: Container(
                                                           decoration: BoxDecoration(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                  184,
-                                                                  238,
-                                                                  134,
-                                                                  137,
-                                                                ),
+                                                            color: Colors.black,
                                                             borderRadius:
                                                                 BorderRadius.only(
                                                                   bottomLeft:
@@ -431,8 +425,9 @@ class Games extends GetView<GamesController> {
                                                                 TextOverflow
                                                                     .ellipsis,
                                                             style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
+                                                              color: Color(
+                                                                0xFFFFECB3,
+                                                              ),
                                                               fontSize:
                                                                   width * 0.018,
                                                               fontWeight:

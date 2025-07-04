@@ -226,10 +226,11 @@ class Mygames extends GetView<MyGamesController> {
                                       );
                                     },
                                     child: Card(
-                                      elevation: isSelected ? 12 : 2,
+                                      elevation: 20,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(9),
                                       ),
+                                      color: Colors.black,
                                       child: Stack(
                                         children: [
                                           Column(
@@ -268,20 +269,17 @@ class Mygames extends GetView<MyGamesController> {
                                                           decoration:
                                                               BoxDecoration(
                                                                 color:
-                                                                    Color.fromARGB(
-                                                                      184,
-                                                                      195,
-                                                                      109,
-                                                                      111,
-                                                                    ),
+                                                                    Colors
+                                                                        .black,
                                                               ),
                                                           alignment:
                                                               Alignment.center,
                                                           child: Text(
                                                             game[index]['name'],
                                                             style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
+                                                              color: Color(
+                                                                0xFFFFECB3,
+                                                              ),
                                                               fontSize:
                                                                   width * 0.012,
                                                               fontWeight:
@@ -298,12 +296,7 @@ class Mygames extends GetView<MyGamesController> {
                                               Expanded(
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                      184,
-                                                      238,
-                                                      134,
-                                                      137,
-                                                    ),
+                                                    color: Colors.black,
                                                     borderRadius:
                                                         BorderRadius.only(
                                                           bottomLeft:
@@ -323,7 +316,7 @@ class Mygames extends GetView<MyGamesController> {
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Color(0xFFFFECB3),
                                                       fontSize: width * 0.018,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -346,29 +339,13 @@ class Mygames extends GetView<MyGamesController> {
                                                   topLeft: Radius.circular(9),
                                                   topRight: Radius.circular(9),
                                                 ),
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                  colors: [
-                                                    Color.fromARGB(
-                                                      255,
-                                                      223,
-                                                      192,
-                                                      129,
-                                                    ),
-                                                    Color.fromARGB(
-                                                      255,
-                                                      226,
-                                                      138,
-                                                      174,
-                                                    ),
-                                                  ],
-                                                ),
+                                                color: Colors.black,
                                               ),
                                               child: Text(
                                                 " عدد مرات اللعب : ${controller.mygames[i]['count']} ",
                                                 style: TextStyle(
                                                   fontSize: width * 0.016,
+                                                  color: Color(0xFFFFECB3),
                                                 ),
                                               ),
                                             ),
