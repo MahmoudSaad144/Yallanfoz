@@ -1,1 +1,1 @@
-const String serverlink = "https://yallanfoz.giftdose.com";
+const String serverlink = "https://yallanfoz.com";
