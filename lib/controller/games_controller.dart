@@ -38,6 +38,12 @@ class GamesController extends GetxController {
 
   @override
   void onClose() {
+    scrollController.removeListener(scrollListener); // تنظيف
+    scrollController.dispose(); // مهم جدًا
+    search.dispose();
+    teamname.dispose();
+    firstTeam.dispose();
+    secondTeam.dispose();
     super.onClose();
   }
 

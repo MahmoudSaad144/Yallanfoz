@@ -31,6 +31,8 @@ class MyGamesController extends GetxController {
 
   @override
   void onClose() {
+    scrollController.removeListener(scrollListener); // تنظيف
+    scrollController.dispose(); // مهم جدًا
     teamname.dispose();
     firstTeam.dispose();
     secondTeam.dispose();
